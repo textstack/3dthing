@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6b6p0tq65me1"]
+
+[ext_resource type="PackedScene" uid="uid://nemvqo0hunnq" path="res://objects/char.tscn" id="1_8jn0i"]
+[ext_resource type="Script" path="res://areas/main.gd" id="1_yugsj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5pyja"]
+size = Vector3(25, 1, 25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ljri4"]
+size = Vector3(25, 1, 25)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_yugsj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_5pyja")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_ljri4")
+
+[node name="Char" parent="." instance=ExtResource("1_8jn0i")]
