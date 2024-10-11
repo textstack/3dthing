@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6b6p0tq65me1"]
+
+[ext_resource type="PackedScene" uid="uid://nemvqo0hunnq" path="res://objects/char.tscn" id="1_8jn0i"]
+[ext_resource type="Script" path="res://areas/main.gd" id="1_yugsj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5pyja"]
+size = Vector3(25, 1, 25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ljri4"]
+size = Vector3(25, 1, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k0irt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ss8b4"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_yugsj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_5pyja")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_ljri4")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_k0irt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0157642, -0.0595632, 0.0115147)
+mesh = SubResource("BoxMesh_ss8b4")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77005, 9.61371)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+shape = SubResource("BoxShape3D_k0irt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0157642, -0.0595632, 0.0115147)
+mesh = SubResource("BoxMesh_ss8b4")
+
+[node name="Char" parent="." instance=ExtResource("1_8jn0i")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999975, -0.00613251, 0.00366795, -0.00023584, 0.484704, 0.874679, -0.00714184, -0.874657, 0.48469, 0, 7.17011, 0)
