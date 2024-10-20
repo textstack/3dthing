@@ -1,14 +1,24 @@
 extends CharacterBody3D
 
-const SPEED = 10
-const JUMP_VELOCITY = 7
+const SPEED = 5
+const JUMP_VELOCITY = 4
 
 var sens = 0.2
 
 var can_jump = false
 
+# Bob variables
+const BOB_FREQ = 2.4
+const BOB_AMP = 0.08
+var t_bob = 0.0
+
+# Store the initial camera position
+var initial_camera_position: Vector3
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# Store the initial camera position
+	initial_camera_position = $Camera3D.transform.origin
 	
 
 func _input(event: InputEvent) -> void:
@@ -43,4 +53,16 @@ func _physics_process(delta: float) -> void:
 	velocity.x = damp(velocity.x, vel.x, delta)
 	velocity.z = damp(velocity.z, vel.z, delta)
 	
+	# Head bob
+	t_bob += delta * velocity.length() * float(is_on_floor())
+	$Camera3D.transform.origin = initial_camera_position + _headbob(t_bob)
+	
 	move_and_slide()
+	
+# Function to calculate head bob
+func _headbob(time) -> Vector3:
+	var pos = Vector3.ZERO
+	pos.y = sin(time * BOB_FREQ) * BOB_AMP
+	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
+	return pos
+	

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bui61ndspbpmb"]
+
+[ext_resource type="PackedScene" uid="uid://bc1t81estg8ce" path="res://models/deco/pumpkin-carved.glb" id="1_wnk8x"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yy6vl"]
+points = PackedVector3Array(-0.0892849, 0.059994, -0.154586, -0.0750273, 0, -0.129921, -0.15002, 0, -3.02643e-05, -0.1785, 0.059994, -3.02643e-05, -0.142821, 0.159984, -3.02643e-05, -0.071428, 0.159984, -0.123687, 0.0892151, 0.059994, -0.154586, 0.0749924, 0, -0.129921, -0.0750273, 0, 0.129891, -0.0892849, 0.059994, 0.154586, -0.107107, 0.159984, 0.0618283, -0.021701, 0.25828, 0.0116515, -0.021701, 0.25828, -0.0116817, 0.071393, 0.159984, -0.123687, 0.1785, 0.059994, -3.02643e-05, 0.149985, 0, -3.02643e-05, 0.0749924, 0, 0.129891, -3.49432e-05, 0.159984, 0.123657, -0.0602455, 0.141326, 0.104288, 0.0892151, 0.059994, 0.154586, 0.00164242, 0.25828, 0.0116515, 0.00164242, 0.25828, -0.0116817, 0.142786, 0.159984, -3.02643e-05, 0.107072, 0.159984, 0.0618283, 0.0612589, 0.138368, 0.106104)
+
+[node name="pumpkin-carved" instance=ExtResource("1_wnk8x")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape3D_yy6vl")

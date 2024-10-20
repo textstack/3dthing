@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://curw6svjjdjy"]
+
+[ext_resource type="PackedScene" uid="uid://bd4j6x0rxsyy0" path="res://models/graves/gravestone-bevel.glb" id="1_l5m7o"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_g0hw5"]
+points = PackedVector3Array(-0.22, 0, -0.09975, -0.22, 0, 0.09975, -0.22, 0.0779475, -0.09975, 0.22, 0, -0.09975, 0.22, 0, 0.09975, -0.22, 0.0779475, 0.09975, 0.22, 0.0779475, -0.09975, -0.19502, 0.436449, -0.0747539, -0.170039, 0.461483, -0.0747539, -0.0599099, 0.565205, -0.0747539, -4.30644e-05, 0.581249, -0.0747539, 0.22, 0.0779475, 0.09975, -4.30644e-05, 0.581249, 0.0747344, -0.0599099, 0.565205, 0.0747344, -0.170039, 0.461483, 0.0747344, -0.19502, 0.436449, 0.0747344, 0.0598669, 0.565205, -0.0747539, 0.169953, 0.461483, -0.0747539, 0.194976, 0.436449, -0.0747539, 0.194976, 0.436449, 0.0747344, 0.169953, 0.461483, 0.0747344, 0.0598669, 0.565205, 0.0747344)
+
+[node name="gravestone-bevel" instance=ExtResource("1_l5m7o")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape3D_g0hw5")
