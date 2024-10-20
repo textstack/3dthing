@@ -151,20 +151,18 @@ material_override = SubResource("StandardMaterial3D_jo1hu")
 mesh = SubResource("BoxMesh_ljri4")
 surface_material_override/0 = SubResource("StandardMaterial3D_gxelt")
 
-[node name="camera" type="StaticBody3D" parent="."]
+[node name="block2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.106, 6)
-visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="camera"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="block2"]
 shape = SubResource("BoxShape3D_k0irt")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="camera"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="block2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0157642, -0.0595632, 0.0115147)
 mesh = SubResource("BoxMesh_ss8b4")
 
 [node name="block" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54018, 9.61371)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="block"]
 shape = SubResource("BoxShape3D_k0irt")
