@@ -16,6 +16,13 @@ var t_bob = 0.0
 # Store the initial camera position
 var initial_camera_position: Vector3
 
+#Bullets
+var bullet = load("res://objects/bullet.tscn")
+var instance
+
+@onready var gun_ani = $Camera3D/Pistol/RootNode/AnimationPlayer
+@onready var gun_barrel = $Camera3D/Pistol/RootNode/RayCast3D
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	# Store the initial camera position
@@ -62,6 +69,15 @@ func _physics_process(delta: float) -> void:
 	# Head bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	$Camera3D.transform.origin = initial_camera_position + _headbob(t_bob)
+	
+	# Shooting
+	if Input.is_action_pressed("Shoot"):
+		if !gun_ani.is_playing():
+			gun_ani.play("shoot")
+			instance = bullet.instantiate()
+			instance.position = gun_barrel.global_position
+			instance.transform.basis = gun_barrel.global_transform.basis
+			get_parent().add_child(instance)
 	
 	move_and_slide()
 	

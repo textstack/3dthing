@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsadhg8bxqiha"]
+
+[ext_resource type="PackedScene" uid="uid://bmmexqshs5bok" path="res://models/weapons/Pistol.glb" id="1_jedwi"]
+
+[sub_resource type="Animation" id="Animation_wp3st"]
+resource_name = "shoot"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol_5:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.5), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3f1il"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pistol_5:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yams7"]
+_data = {
+"RESET": SubResource("Animation_3f1il"),
+"shoot": SubResource("Animation_wp3st")
+}
+
+[node name="Pistol" instance=ExtResource("1_jedwi")]
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 0, 0, 0)
+
+[node name="Pistol_5" parent="RootNode" index="0"]
+transform = Transform3D(-4.37114e-06, -88.882, -4.37114e-06, 0, -3.88515e-06, 100, -100, 3.88515e-06, 1.91069e-13, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RootNode" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_yams7")
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="RootNode" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.817375, 0.786161, -1.50267)
+target_position = Vector3(0, 0, -1)

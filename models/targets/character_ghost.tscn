@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://culgipr2eo68w"]
+[gd_scene load_steps=13 format=3 uid="uid://culgipr2eo68w"]
 
 [ext_resource type="PackedScene" uid="uid://m6gfc6v8bsff" path="res://models/targets/character-ghost.glb" id="1_6nigh"]
 [ext_resource type="Script" path="res://models/targets/scripts/character_ghost.gd" id="2_pfchm"]
+[ext_resource type="Script" path="res://models/targets/ghost_body.gd" id="3_tfx05"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_btxe5"]
 size = Vector3(0.301788, 0.649994, 0.305481)
@@ -42,34 +43,35 @@ script = ExtResource("2_pfchm")
 
 [node name="Skeleton3D" parent="." index="0"]
 transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0, 0, 0)
-bones/1/position = Vector3(0, 0.1, 0)
-bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/3/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/4/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/3/rotation = Quaternion(0, 0, -0.382683, 0.92388)
+bones/4/rotation = Quaternion(0, 0, 0.382683, 0.92388)
 
 [node name="torso" parent="Skeleton3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -1.44382e-15, 0.1, -0.223184)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44382e-15, 0.223184, -7.21911e-16)
 
-[node name="Area3D" type="Area3D" parent="Skeleton3D/torso" index="1"]
+[node name="Area3D" type="Area3D" parent="Skeleton3D/torso" index="1" groups=["enemy"]]
+script = ExtResource("3_tfx05")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/torso/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00135803, 0.205185, -0.0090637)
 shape = SubResource("BoxShape3D_btxe5")
 
 [node name="arm-left" parent="Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.15, 0.1025, -0.448184)
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.15, 0.448184, 0.0025)
 
-[node name="Area3D" type="Area3D" parent="Skeleton3D/arm-left" index="1"]
+[node name="Area3D" type="Area3D" parent="Skeleton3D/arm-left" index="1" groups=["enemy"]]
+script = ExtResource("3_tfx05")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/arm-left/Area3D" index="0"]
 transform = Transform3D(0.972403, 0, -0.23331, 0, 1, 0, 0.23331, 0, 0.972403, 0.124511, 0.0199509, 0.0147335)
 shape = SubResource("BoxShape3D_r1ix3")
 
 [node name="arm-right" parent="Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, -0.15, 0.1025, -0.448184)
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.15, 0.448184, 0.0025)
 
-[node name="Area3D" type="Area3D" parent="Skeleton3D/arm-right" index="1"]
+[node name="Area3D" type="Area3D" parent="Skeleton3D/arm-right" index="1" groups=["enemy"]]
 collision_layer = 2
+script = ExtResource("3_tfx05")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/arm-right/Area3D" index="0"]
 transform = Transform3D(0.968235, 0, 0.250042, 0, 1, 0, -0.250042, 0, 0.968235, -0.124789, 0.014473, 0.00819192)
@@ -91,3 +93,4 @@ shape = SubResource("CapsuleShape3D_04bab")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="4"]
 
 [connection signal="body_entered" from="Skeleton3D/torso/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_part_hit" from="Skeleton3D/torso/Area3D" to="." method="_on_area_3d_body_part_hit"]

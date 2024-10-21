@@ -4,6 +4,8 @@ var player: Node3D
 var main_scene: Node3D
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+var health = 2
+
 func _ready():
 	if player:
 		look_at_player()
@@ -34,3 +36,15 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 		main_scene.spawn_ghost()
+		
+
+
+func _on_area_3d_body_part_hit(dam: Variant) -> void:
+	health -= dam
+	if health <= 0:
+		play_death_animation()
+		await get_tree().create_timer(1.0).timeout
+		queue_free()
+		main_scene.spawn_ghost()
+
+	

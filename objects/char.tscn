@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://nemvqo0hunnq"]
+[gd_scene load_steps=5 format=3 uid="uid://nemvqo0hunnq"]
 
 [ext_resource type="Script" path="res://objects/char.gd" id="1_6ugb3"]
+[ext_resource type="PackedScene" uid="uid://bsadhg8bxqiha" path="res://objects/pistol.tscn" id="2_s7vso"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hfjb8"]
 
@@ -23,3 +24,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 cull_mask = 1048573
 current = true
+
+[node name="Pistol" parent="Camera3D" instance=ExtResource("2_s7vso")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.464093, -0.365404, -0.641368)
