@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmmv742myvlx"]
+
+[ext_resource type="PackedScene" uid="uid://dg7g43to3csyi" path="res://models/light/lightpost-single.glb" id="1_0ixm6"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_usudf"]
+points = PackedVector3Array(0.0418246, 1.32915, 0.0237092, -0.0209706, 1.20359, -0.0181379, 0.0208929, 1.20359, -0.0181379, -0.0209706, 1.26638, 0.128352, -0.0419024, 1.32915, -0.0391024, 0.0208929, 1.30822, 0.128352, 0.0418246, 1.22452, -0.0391024, 0.0418246, 1.22452, 0.0446246, 0.0418246, 1.32915, -0.0391024, -0.0419024, 1.22452, -0.0391024, -0.0419024, 1.32915, 0.0237092, -0.0419024, 1.22452, 0.0446246, -0.0209706, 1.30822, 0.128352, -0.0209706, 1.20359, 0.0237092, 0.0208929, 1.26638, 0.128352, 0.0208929, 1.20359, 0.0237092, 0.0418246, 1.30822, 0.0446246, -0.0419024, 1.30822, 0.0446246)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7fuy6"]
+points = PackedVector3Array(0.0208929, 1.20358, 0.0236929, -0.0419024, 0.910588, -0.0391024, -0.0419024, 0.910588, 0.0236929, 0.0418246, 0.910588, -0.0391024, -0.0209706, 1.20358, -0.0391024, 0.0418246, 0.910588, 0.0236929, -0.0209706, 1.20358, 0.0236929, 0.0208929, 1.20358, -0.0391024, 0.0418246, 1.03616, -0.0391024, -0.0419024, 1.03616, 0.0236929, 0.0418246, 1.03616, 0.0236929, -0.0419024, 1.03616, -0.0391024)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pjnbn"]
+points = PackedVector3Array(-0.0209379, 1.26634, 0.12837, 0.0836881, 1.20354, 0.316737, -0.0837659, 1.20354, 0.316737, 0.0836881, 0.952464, 0.149316, -0.0837659, 0.952464, 0.316737, -0.0837659, 0.952464, 0.149316, 0.0836881, 0.952464, 0.316737, 0.0208765, 1.30823, 0.12837, -0.0418696, 1.30823, 0.274845, -0.0837659, 1.20354, 0.149316, 0.0836881, 1.20354, 0.149316, 0.0418082, 1.30823, 0.274845, -0.0209379, 1.30823, 0.12837, 0.0418082, 1.30823, 0.212099, -0.0418696, 1.30823, 0.212099, 0.0208765, 1.26634, 0.12837)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_f0l0i"]
+points = PackedVector3Array(0.0418082, 0.847617, 0.0445918, -0.0837659, -0.0102856, -0.0809659, -0.0837659, -0.0102856, 0.0864881, 0.0836881, -0.0102856, -0.0809659, -0.0418696, 0.910441, -0.039086, 0.0836881, -0.0102856, 0.0864881, 0.0418082, 0.910441, -0.039086, -0.0418696, 0.847617, 0.0445918, -0.0837659, 0.136183, -0.0809659, 0.0836881, 0.0942707, 0.0864881, 0.0836881, 0.136183, -0.0809659, -0.0837659, 0.0942707, 0.0864881, -0.0418696, 0.910441, 0.0236601, 0.0418082, 0.910441, 0.0236601, -0.0837659, 0.136183, 0.0655236, 0.0836881, 0.136183, 0.0655236, 0.06274, 0.157095, -0.0809659, -0.0628014, 0.157095, -0.0809659)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o1ne8"]
+size = Vector3(1.5, 2.5, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6cp2"]
+albedo_color = Color(0.807047, 0.751842, 0.532207, 1)
+emission_enabled = true
+emission = Color(0.386713, 0.325851, 0.182308, 1)
+emission_energy_multiplier = 13.86
+
+[node name="lightpost-single" instance=ExtResource("1_0ixm6")]
+
+[node name="lightpost-single" parent="." index="0"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape3D_usudf")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="2"]
+shape = SubResource("ConvexPolygonShape3D_7fuy6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="3"]
+shape = SubResource("ConvexPolygonShape3D_pjnbn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="4"]
+shape = SubResource("ConvexPolygonShape3D_f0l0i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="5"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.00402856, 3.19643, 0.696351)
+mesh = SubResource("BoxMesh_o1ne8")
+surface_material_override/0 = SubResource("StandardMaterial3D_n6cp2")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D" index="0"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.719976, 0.0414248)
+visible = false
+light_color = Color(1, 1, 0.6, 1)
+light_energy = 6.647
+light_indirect_energy = 3.353
+light_volumetric_fog_energy = 1.471
+light_size = 0.04
+omni_range = 5.651
+omni_attenuation = 2.745
