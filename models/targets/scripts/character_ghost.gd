@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 var player: Node3D
 var main_scene: Node3D
+var shot = preload("res://enemyCollider.tscn")
 @onready var animation_tree: AnimationTree = $AnimationTree
 
 func _ready():
@@ -34,3 +35,9 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 		main_scene.spawn_ghost()
+	if body.name == "enemyCollider":
+		play_death_animation()
+		await get_tree().create_timer(1.0).timeout
+		queue_free()
+		main_scene.spawn_ghost()
+		

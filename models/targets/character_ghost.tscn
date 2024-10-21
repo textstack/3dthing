@@ -42,36 +42,35 @@ script = ExtResource("2_pfchm")
 
 [node name="Skeleton3D" parent="." index="0"]
 transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0, 0, 0)
-bones/1/position = Vector3(0, 0.1, 0)
-bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/3/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/4/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/2/rotation = Quaternion(0.032184, 0, 0, 0.999482)
+bones/3/rotation = Quaternion(0, 0, -0.291821, 0.956473)
+bones/4/rotation = Quaternion(0, 0, 0.291821, 0.956473)
 
 [node name="torso" parent="Skeleton3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -1.44382e-15, 0.1, -0.223184)
+transform = Transform3D(1, 0, 0, 0, 0.997928, -0.0643347, 0, 0.0643347, 0.997928, -1.44382e-15, 0.223184, -7.21911e-16)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/torso" index="1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/torso/Area3D" index="0"]
+[node name="torsoC" type="CollisionShape3D" parent="Skeleton3D/torso/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00135803, 0.205185, -0.0090637)
 shape = SubResource("BoxShape3D_btxe5")
 
 [node name="arm-left" parent="Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.15, 0.1025, -0.448184)
+transform = Transform3D(0.829681, 0.558238, 0, -0.557082, 0.827962, -0.0643347, -0.0359141, 0.0533773, 0.997928, 0.15, 0.447557, 0.0169701)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/arm-left" index="1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/arm-left/Area3D" index="0"]
+[node name="leftArmC" type="CollisionShape3D" parent="Skeleton3D/arm-left/Area3D" index="0"]
 transform = Transform3D(0.972403, 0, -0.23331, 0, 1, 0, 0.23331, 0, 0.972403, 0.124511, 0.0199509, 0.0147335)
 shape = SubResource("BoxShape3D_r1ix3")
 
 [node name="arm-right" parent="Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, -0.15, 0.1025, -0.448184)
+transform = Transform3D(0.829681, -0.558238, 0, 0.557082, 0.827962, -0.0643347, 0.0359141, 0.0533773, 0.997928, -0.15, 0.447557, 0.0169701)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/arm-right" index="1"]
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/arm-right/Area3D" index="0"]
+[node name="rightArmC" type="CollisionShape3D" parent="Skeleton3D/arm-right/Area3D" index="0"]
 transform = Transform3D(0.968235, 0, 0.250042, 0, 1, 0, -0.250042, 0, 0.968235, -0.124789, 0.014473, 0.00819192)
 shape = SubResource("BoxShape3D_c5gmc")
 
@@ -83,7 +82,7 @@ parameters/conditions/die = false
 [node name="AnimationPlayer" parent="." index="2"]
 process_mode = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
+[node name="ghostC" type="CollisionShape3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.404677, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_04bab")
