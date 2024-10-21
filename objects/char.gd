@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
 const SPEED = 5
-const JUMP_VELOCITY = 6.5
+const SPRINT_SPEED = 10
+const JUMP_VELOCITY = 4
 
 var sens = 0.2
 
@@ -42,10 +43,15 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("Move_Left", "Move_Right", "Move_Forward", "Move_Back")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
+	# Determine current speed based on sprint input
+	var curr_speed = SPEED  # Default to normal speed
+	if Input.is_action_pressed("Sprint"):
+		curr_speed = SPRINT_SPEED  # Switch to sprint speed
+	
 	var vel = Vector3(0, 0, 0)
 	if direction:
-		vel.x = direction.x * SPEED
-		vel.z = direction.z * SPEED
+		vel.x = direction.x * curr_speed
+		vel.z = direction.z * curr_speed
 	else:
 		vel.x = 0
 		vel.z = 0

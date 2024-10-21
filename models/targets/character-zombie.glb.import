@@ -3,17 +3,17 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cmej3214e55nv"
-path="res://.godot/imported/pumpkin.glb-a1266b5551e4e18f944513f904f42819.scn"
+uid="uid://dax01vtxqf302"
+path="res://.godot/imported/character-zombie.glb-419d299af779e6731feb49cb17175445.scn"
 
 [deps]
 
-source_file="res://models/graves/pumpkin.glb"
-dest_files=["res://.godot/imported/pumpkin.glb-a1266b5551e4e18f944513f904f42819.scn"]
+source_file="res://models/targets/character-zombie.glb"
+dest_files=["res://.godot/imported/character-zombie.glb-419d299af779e6731feb49cb17175445.scn"]
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="CharacterBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0

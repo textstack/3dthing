@@ -18,6 +18,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_b1jkt")
 shape = SubResource("ConcavePolygonShape3D_cyag0")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+visible = false
 light_color = Color(0.973913, 0.970201, 0.960092, 1)
 light_energy = 0.608
 light_indirect_energy = 2.02

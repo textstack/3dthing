@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://culgipr2eo68w"]
+
+[ext_resource type="PackedScene" uid="uid://m6gfc6v8bsff" path="res://models/targets/character-ghost.glb" id="1_6nigh"]
+[ext_resource type="Script" path="res://models/targets/scripts/character_ghost.gd" id="2_pfchm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_btxe5"]
+size = Vector3(0.301788, 0.649994, 0.305481)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1ix3"]
+size = Vector3(0.300629, 0.0830231, 0.125)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c5gmc"]
+size = Vector3(0.301147, 0.0897675, 0.120377)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrp1r"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4gn2p"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1jtuy"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_swhmu"]
+advance_mode = 2
+advance_condition = &"die"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_c25wp"]
+states/die/node = SubResource("AnimationNodeAnimation_wrp1r")
+states/die/position = Vector2(364, 181)
+states/idle/node = SubResource("AnimationNodeAnimation_4gn2p")
+states/idle/position = Vector2(322, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_1jtuy"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_swhmu")]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_04bab"]
+radius = 0.333686
+height = 0.72234
+
+[node name="character-ghost" instance=ExtResource("1_6nigh")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+script = ExtResource("2_pfchm")
+
+[node name="Skeleton3D" parent="." index="0"]
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0, 0, 0)
+bones/1/position = Vector3(0, 0.1, 0)
+bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/3/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/4/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+
+[node name="torso" parent="Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -1.44382e-15, 0.1, -0.223184)
+
+[node name="Area3D" type="Area3D" parent="Skeleton3D/torso" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/torso/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00135803, 0.205185, -0.0090637)
+shape = SubResource("BoxShape3D_btxe5")
+
+[node name="arm-left" parent="Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.15, 0.1025, -0.448184)
+
+[node name="Area3D" type="Area3D" parent="Skeleton3D/arm-left" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/arm-left/Area3D" index="0"]
+transform = Transform3D(0.972403, 0, -0.23331, 0, 1, 0, 0.23331, 0, 0.972403, 0.124511, 0.0199509, 0.0147335)
+shape = SubResource("BoxShape3D_r1ix3")
+
+[node name="arm-right" parent="Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, -0.15, 0.1025, -0.448184)
+
+[node name="Area3D" type="Area3D" parent="Skeleton3D/arm-right" index="1"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/arm-right/Area3D" index="0"]
+transform = Transform3D(0.968235, 0, 0.250042, 0, 1, 0, -0.250042, 0, 0.968235, -0.124789, 0.014473, 0.00819192)
+shape = SubResource("BoxShape3D_c5gmc")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="1"]
+tree_root = SubResource("AnimationNodeStateMachine_c25wp")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/die = false
+
+[node name="AnimationPlayer" parent="." index="2"]
+process_mode = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.404677, 0)
+visible = false
+shape = SubResource("CapsuleShape3D_04bab")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="4"]
+
+[connection signal="body_entered" from="Skeleton3D/torso/Area3D" to="." method="_on_area_3d_body_entered"]

@@ -3,17 +3,17 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://g8u41xyc6vh3"
-path="res://.godot/imported/pumpkin-carved.glb-d1634dd94bad5a97787b926455235929.scn"
+uid="uid://co8xu1u1qbjd6"
+path="res://.godot/imported/character-vampire.glb-f62be40e48d8a4fd904ff9a57029c962.scn"
 
 [deps]
 
-source_file="res://models/graves/pumpkin-carved.glb"
-dest_files=["res://.godot/imported/pumpkin-carved.glb-d1634dd94bad5a97787b926455235929.scn"]
+source_file="res://models/targets/character-vampire.glb"
+dest_files=["res://.godot/imported/character-vampire.glb-f62be40e48d8a4fd904ff9a57029c962.scn"]
 
 [params]
 
-nodes/root_type=""
+nodes/root_type="CharacterBody3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
