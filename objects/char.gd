@@ -8,6 +8,7 @@ var sens = 0.2
 
 var can_jump = false
 
+var raycast_test = preload("res://enemyCollider.tscn")
 # Bob variables
 const BOB_FREQ = 2.4
 const BOB_AMP = 0.08
@@ -65,6 +66,37 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+
+func _process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("shoot"):
+		_shoot()
+		
+func _shoot() -> void:
+	var camera = $Camera3D # Gets Camera of player
+	var space_state = camera.get_world_3d().direct_space_state # Tales camera 3d state
+	var screen_center = get_viewport().size / 2 # Finds center of that camera
+	var origin = camera.project_ray_origin(screen_center) # finds origin of ray from that center
+	var end = origin + camera.project_ray_normal(screen_center) * 1000 # finds the end
+	var query = PhysicsRayQueryParameters3D.create(origin, end) # creates ray
+	query.collide_with_bodies = true # sets ray collision to true
+	query.collide_with_areas = true # sets ray collision to area true
+	var result = space_state.intersect_ray(query) 
+	print(result)
+	if result: # checks if ray hit stuff
+		_test_raycast(result.get("position"))
+	else:
+		print("You missed")
+	
+	
+func _test_raycast(position: Vector3) -> void:
+	var instance = raycast_test.instantiate() # this func just creates the test ball to show the raycast works
+	get_tree().root.add_child(instance)
+	instance.global_position = position
+	await get_tree().create_timer(.1).timeout
+	instance.queue_free()
+	
+
 # Function to calculate head bob
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
