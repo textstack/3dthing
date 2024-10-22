@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c6b6p0tq65me1"]
+[gd_scene load_steps=28 format=3 uid="uid://c6b6p0tq65me1"]
 
 [ext_resource type="PackedScene" uid="uid://nemvqo0hunnq" path="res://objects/char.tscn" id="1_8jn0i"]
 [ext_resource type="Script" path="res://areas/main.gd" id="1_yugsj"]
@@ -17,7 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://l1vfrbvi1ayr" path="res://models/graves/gravestone_roof.tscn" id="13_aaebe"]
 [ext_resource type="PackedScene" uid="uid://ccigw0b5pjlt3" path="res://models/graves/gravestone_cross.tscn" id="14_dcean"]
 [ext_resource type="PackedScene" uid="uid://cbvcqlww8qrf1" path="res://models/trees/pine_crooked.tscn" id="20_kmaa2"]
+[ext_resource type="Texture2D" uid="uid://dfp6r0d1clx72" path="res://crosshairs/crosshair153.png" id="20_tpkeh"]
 [ext_resource type="PackedScene" uid="uid://bui61ndspbpmb" path="res://models/deco/pumpkin_carved.tscn" id="21_mn35r"]
+[ext_resource type="Texture2D" uid="uid://y3ud83dw3a8b" path="res://crosshairs/crosshair161.png" id="21_tvq1y"]
 [ext_resource type="PackedScene" uid="uid://dfaiqy2jh6p1x" path="res://models/deco/pumpkin_tall.tscn" id="22_igwyh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5pyja"]
@@ -1766,3 +1768,21 @@ transform = Transform3D(2.75971, 0, 1.17643, 0, 3, 0, -1.17643, 0, 2.75971, -1.9
 
 [node name="pumpkin-tall" parent="deco" instance=ExtResource("22_igwyh")]
 transform = Transform3D(2.06965, 0, -2.17176, 0, 3, 0, 2.17176, 0, 2.06965, 1.47265, 0.690307, -7.43075)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="crosshair" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("20_tpkeh")
+
+[node name="crosshair_hit" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("21_tvq1y")

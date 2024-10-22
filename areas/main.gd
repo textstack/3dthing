@@ -5,6 +5,12 @@ extends Node3D
 var grave_pos: Array[Node3D] = []
 @export var player: Node3D  # Reference to the player node
 
+#crosshair
+@onready var crosshair = $UI/crosshair
+@onready var crosshair_hit = $UI/crosshair_hit
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	grave_pos = [$graves/grave, $graves/grave2, $graves/grave3, $graves/grave4, 
@@ -12,6 +18,14 @@ func _ready() -> void:
 				$graves/grave9, $graves/grave10, $graves/grave11, $graves/grave12, 
 				$graves/grave13, $graves/grave14, $graves/grave15, $graves/grave16, 
 				$graves/grave17, $graves/grave18, $graves/grave19, $graves/grave20]
+				
+	crosshair.position.x = get_viewport().size.x / 2 - 32
+	crosshair.position.y = get_viewport().size.y / 2 - 32
+	crosshair_hit.position.x = get_viewport().size.x / 2 - 32
+	crosshair_hit.position.y = get_viewport().size.y / 2 - 32
+	
+	crosshair_hit.visible = false
+
 
 	spawn_ghost()
 	
@@ -27,6 +41,8 @@ func spawn_ghost():
 		var ghost_instance = ghost.instantiate()
 		ghost_instance.global_transform.origin = random_grave.global_transform.origin + Vector3(0, 0.5, 0)
 		
+		ghost_instance.ghost_hit.connect(_on_enemy_hit)
+		
 		# References
 		ghost_instance.player = player
 		ghost_instance.main_scene = self
@@ -35,3 +51,11 @@ func spawn_ghost():
 		add_child(ghost_instance)
 		# Make the ghost look at the player
 		ghost_instance.look_at_player()
+
+
+func _on_enemy_hit():
+	crosshair_hit.visible = true
+	await get_tree().create_timer(0.1)
+	crosshair_hit.visible = false
+
+	

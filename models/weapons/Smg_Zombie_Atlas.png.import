@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f7hct1vfubqq"
-path.s3tc="res://.godot/imported/colormap.png-a30d147963e577aaf55439424311e474.s3tc.ctex"
+uid="uid://n24eb4ql5fy1"
+path.s3tc="res://.godot/imported/Smg_Zombie_Atlas.png-aef41b3a2999bcda09e79f29494b6170.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "ae8ba728fcf7e919305cebabeacf184e"
+}
 
 [deps]
 
-source_file="res://models/deco/Textures/colormap.png"
-dest_files=["res://.godot/imported/colormap.png-a30d147963e577aaf55439424311e474.s3tc.ctex"]
+source_file="res://models/weapons/Smg_Zombie_Atlas.png"
+dest_files=["res://.godot/imported/Smg_Zombie_Atlas.png-aef41b3a2999bcda09e79f29494b6170.s3tc.ctex"]
 
 [params]
 

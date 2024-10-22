@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://nemvqo0hunnq"]
+[gd_scene load_steps=6 format=3 uid="uid://nemvqo0hunnq"]
 
 [ext_resource type="Script" path="res://objects/char.gd" id="1_6ugb3"]
 [ext_resource type="PackedScene" uid="uid://bsadhg8bxqiha" path="res://objects/pistol.tscn" id="2_s7vso"]
+[ext_resource type="PackedScene" uid="uid://dx88mwxd6l10e" path="res://objects/smg.tscn" id="3_kdy6r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hfjb8"]
 
@@ -27,3 +28,11 @@ current = true
 
 [node name="Pistol" parent="Camera3D" instance=ExtResource("2_s7vso")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.464093, -0.365404, -0.641368)
+visible = false
+
+[node name="smg" parent="Camera3D" instance=ExtResource("3_kdy6r")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.516323, -0.53029, -0.597854)
+
+[node name="AimRay" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-06, -1, 0, 100, -4.37114e-08, 0, 0, -2)
+collide_with_areas = true
