@@ -66,6 +66,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, 0.206024, 0.829624), Vector3(0, 0.204919, 0.861264), Vector3(0, 0.204919, 0.861264), Vector3(0, 0.204919, 0.861264), Vector3(0, 0.204962, 0.84893), Vector3(0, 0.204772, 0.840182), Vector3(0, 0.204419, 0.832582), Vector3(0, 0.204919, 0.830024)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RootNode/MuzzleFlash:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, true, true, true, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_6khr5"]
 length = 0.001
@@ -117,6 +129,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, 0.204919, 0.861264)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RootNode/MuzzleFlash:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_narpr"]
 _data = {
@@ -130,6 +154,9 @@ _data = {
 transform = Transform3D(0.15, 0, 0, 0, -0.15, 2.26494e-08, 0, -2.26494e-08, -0.15, 0, 0.204919, 0.861264)
 mesh = SubResource("PlaneMesh_dkto3")
 surface_material_override/0 = SubResource("StandardMaterial3D_d72e3")
+
+[node name="Barrel" type="Node3D" parent="RootNode" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201241, 0.803393)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {

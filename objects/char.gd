@@ -18,14 +18,17 @@ var initial_camera_position: Vector3
 
 #Bullets
 var bullet = load("res://objects/bullet.tscn")
+var bullet_trail = load("res://objects/bullet_trail.tscn")
 var instance
 
 #Guns
 @onready var gun_ani = $Camera3D/Pistol/RootNode/AnimationPlayer
 @onready var gun_barrel = $Camera3D/Pistol/RootNode/RayCast3D
 @onready var smg_ani = $Camera3D/smg/AnimationPlayer
+@onready var smg_barrel = $Camera3D/smg/RootNode/Barrel
 
 @onready var aim_ray = $Camera3D/AimRay
+@onready var aim_ray_end = $Camera3D/AimRayEnd
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -100,6 +103,11 @@ func _shoot_auto():
 	if Input.is_action_pressed("Shoot"):
 		if !smg_ani.is_playing():
 			smg_ani.play("shoot")
+			instance = bullet_trail.instantiate()
 			if aim_ray.is_colliding():
+				instance.init(smg_barrel.global_position, aim_ray.get_collision_point())
 				if aim_ray.get_collider().is_in_group("enemy"):
 					aim_ray.get_collider().hit()
+			else:
+				instance.init(smg_barrel.global_position, aim_ray_end.global_position)
+			get_parent().add_child(instance)

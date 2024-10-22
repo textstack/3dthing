@@ -1,9 +1,12 @@
 extends MeshInstance3D
 
 
+var alpha = 1.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var dup_material = material_override.duplicate()
+	material_override = dup_material
 
 
 func init(pos1, pos2):
@@ -16,4 +19,9 @@ func init(pos1, pos2):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	alpha -= delta * 3.5
+	material_override.albedo_color.a = alpha
+
+
+func _on_timer_timeout() -> void:
+	queue_free()
