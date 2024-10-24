@@ -31,11 +31,13 @@ func play_death_animation() -> void:
 	
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body == player:
+		Global.score += 1
 		play_death_animation()
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
 		main_scene.spawn_ghost()
 	if body.name == "enemyCollider":
+		Global.score += 1
 		play_death_animation()
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
