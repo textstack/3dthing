@@ -43,12 +43,12 @@ script = ExtResource("2_pfchm")
 
 [node name="Skeleton3D" parent="." index="0"]
 transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0, 0, 0)
-bones/2/rotation = Quaternion(0.034967, 0, 0, 0.999389)
-bones/3/rotation = Quaternion(0, 0, -0.283821, 0.958877)
-bones/4/rotation = Quaternion(0, 0, 0.283821, 0.958877)
+bones/2/rotation = Quaternion(0.0113344, 0, 0, 0.999936)
+bones/3/rotation = Quaternion(0, 0, -0.351053, 0.936356)
+bones/4/rotation = Quaternion(0, 0, 0.351053, 0.936356)
 
 [node name="torso" parent="Skeleton3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.997555, -0.0698912, 0, 0.0698912, 0.997555, -1.44382e-15, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0.999743, -0.0226673, 0, 0.0226673, 0.999743, -1.44382e-15, 0.223184, -7.21911e-16)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/torso" index="1" groups=["enemy"]]
 script = ExtResource("3_tfx05")
@@ -58,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00135803, 0.205185, -0.009
 shape = SubResource("BoxShape3D_btxe5")
 
 [node name="arm-left" parent="Skeleton3D" index="1"]
-transform = Transform3D(0.838891, 0.544299, 0, -0.542968, 0.83684, -0.0698912, -0.0380417, 0.0586311, 0.997555, 0.15, 0.447459, 0.0182194)
+transform = Transform3D(0.753524, 0.657421, 0, -0.657252, 0.75333, -0.0226673, -0.0149019, 0.0170803, 0.999743, 0.15, 0.44807, 0.00759949)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/arm-left" index="1" groups=["enemy"]]
 script = ExtResource("3_tfx05")
@@ -68,7 +68,7 @@ transform = Transform3D(0.972403, 0, -0.23331, 0, 1, 0, 0.23331, 0, 0.972403, 0.
 shape = SubResource("BoxShape3D_r1ix3")
 
 [node name="arm-right" parent="Skeleton3D" index="2"]
-transform = Transform3D(0.838891, -0.544299, 0, 0.542968, 0.83684, -0.0698912, 0.0380417, 0.0586311, 0.997555, -0.15, 0.447459, 0.0182194)
+transform = Transform3D(0.753524, -0.657421, 0, 0.657252, 0.75333, -0.0226673, 0.0149019, 0.0170803, 0.999743, -0.15, 0.44807, 0.00759949)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/arm-right" index="1" groups=["enemy"]]
 collision_layer = 2
@@ -95,3 +95,5 @@ shape = SubResource("CapsuleShape3D_04bab")
 
 [connection signal="body_entered" from="Skeleton3D/torso/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_part_hit" from="Skeleton3D/torso/Area3D" to="." method="_on_area_3d_body_part_hit"]
+[connection signal="body_part_hit" from="Skeleton3D/arm-left/Area3D" to="." method="_on_area_3d_body_part_hit"]
+[connection signal="body_part_hit" from="Skeleton3D/arm-right/Area3D" to="." method="_on_area_3d_body_part_hit"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7i3m05dsyled"]
+[gd_scene load_steps=8 format=3 uid="uid://b7i3m05dsyled"]
 
 [ext_resource type="Script" path="res://objects/bullet_trail.gd" id="1_mwlet"]
 
@@ -8,6 +8,34 @@ albedo_color = Color(1, 0.639861, 0.0890142, 1)
 emission_enabled = true
 emission = Color(0.99693, 1, 0.713163, 1)
 
+[sub_resource type="Curve" id="Curve_b4onk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.991243, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_545t5"]
+curve = SubResource("Curve_b4onk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cw6ut"]
+direction = Vector3(0, 0, -1)
+spread = 25.0
+initial_velocity_min = 6.0
+initial_velocity_max = 8.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = -1.60933e-05
+scale_curve = SubResource("CurveTexture_545t5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1reye"]
+albedo_color = Color(0.228494, 1, 0, 1)
+roughness = 0.1
+emission_enabled = true
+emission = Color(0.0484773, 1, 0.0842342, 1)
+emission_energy_multiplier = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_524wq"]
+material = SubResource("StandardMaterial3D_1reye")
+radius = 0.04
+height = 0.08
+
 [node name="bullet_trail" type="MeshInstance3D"]
 material_override = SubResource("StandardMaterial3D_2fnmo")
 script = ExtResource("1_mwlet")
@@ -16,5 +44,12 @@ script = ExtResource("1_mwlet")
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="BloodParticle" type="GPUParticles3D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_cw6ut")
+draw_pass_1 = SubResource("SphereMesh_524wq")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

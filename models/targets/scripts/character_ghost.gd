@@ -43,7 +43,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 func _on_area_3d_body_part_hit(dam: Variant) -> void:
 	health -= dam
-	emit_signal("ghost_hit")
+	ghost_hit.emit()
 	if health <= 0:
 		play_death_animation()
 		await get_tree().create_timer(1.0).timeout

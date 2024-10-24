@@ -106,8 +106,13 @@ func _shoot_auto():
 			instance = bullet_trail.instantiate()
 			if aim_ray.is_colliding():
 				instance.init(smg_barrel.global_position, aim_ray.get_collision_point())
+				get_parent().add_child(instance)
 				if aim_ray.get_collider().is_in_group("enemy"):
 					aim_ray.get_collider().hit()
+					instance._trigger_particles(aim_ray.get_collision_point(), smg_barrel.global_position, true)
+				else:
+					instance._trigger_particles(aim_ray.get_collision_point(), smg_barrel.global_position, false)
+			
 			else:
 				instance.init(smg_barrel.global_position, aim_ray_end.global_position)
 			get_parent().add_child(instance)

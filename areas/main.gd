@@ -24,7 +24,6 @@ func _ready() -> void:
 	crosshair_hit.position.x = get_viewport().size.x / 2 - 32
 	crosshair_hit.position.y = get_viewport().size.y / 2 - 32
 	
-	crosshair_hit.visible = false
 
 
 	spawn_ghost()
@@ -53,9 +52,10 @@ func spawn_ghost():
 		ghost_instance.look_at_player()
 
 
+#crosshair hit function doesnt work as intended
 func _on_enemy_hit():
 	crosshair_hit.visible = true
-	await get_tree().create_timer(0.1)
+	await get_tree().create_timer(1.0)
 	crosshair_hit.visible = false
 
 	
