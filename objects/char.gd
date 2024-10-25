@@ -21,6 +21,17 @@ var bullet = load("res://objects/bullet.tscn")
 var bullet_trail = load("res://objects/bullet_trail.tscn")
 var instance
 
+enum weapons {
+	
+	SMG,
+	PISTOL
+}
+
+var weapon = weapons.SMG
+var can_shoot = true
+
+@onready var weapon_switching = $Camera3D/WeaponSwitch
+
 #Guns
 @onready var gun_ani = $Camera3D/Pistol/RootNode/AnimationPlayer
 @onready var gun_barrel = $Camera3D/Pistol/RootNode/RayCast3D
@@ -77,7 +88,20 @@ func _physics_process(delta: float) -> void:
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	$Camera3D.transform.origin = initial_camera_position + _headbob(t_bob)
 	
-	_shoot_auto()
+	
+	if Input.is_action_pressed("Shoot") and can_shoot:
+		match weapon:
+			weapons.SMG:
+				_shoot_auto()
+			weapons.PISTOL:
+				_shoot_pistols()
+				
+	#Weapon Switching
+	if Input.is_action_just_pressed("weapon_one") and weapon != weapons.SMG:
+		raise_weapon(weapons.SMG)
+	if Input.is_action_just_pressed("weapon_two") and weapon != weapons.PISTOL:
+		raise_weapon(weapons.PISTOL)
+		
 	
 	move_and_slide()
 	
@@ -116,3 +140,24 @@ func _shoot_auto():
 			else:
 				instance.init(smg_barrel.global_position, aim_ray_end.global_position)
 			get_parent().add_child(instance)
+			
+			
+func lower_weapon():
+	match weapon:
+		weapons.SMG:
+			weapon_switching.play("lowerSMG")
+		weapons.PISTOL:
+			weapon_switching.play("lowerPistol")
+			
+func raise_weapon(new_weapon):
+	can_shoot = false
+	lower_weapon()
+	await get_tree().create_timer(0.3).timeout
+	match new_weapon:
+		weapons.SMG:
+			weapon_switching.play_backwards("lowerSMG")
+		weapons.PISTOL:
+			weapon_switching.play_backwards("lowerPistol")
+	weapon = new_weapon
+	can_shoot = true
+	
