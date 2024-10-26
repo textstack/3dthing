@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhv8t21udt6sd"]
+[gd_scene load_steps=13 format=3 uid="uid://dhv8t21udt6sd"]
 
 [ext_resource type="PackedScene" uid="uid://dax01vtxqf302" path="res://models/targets/character-zombie.glb" id="1_r2ort"]
+[ext_resource type="Script" path="res://models/targets/scripts/character_zombie.gd" id="2_3p6d0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u6gmj"]
 size = Vector3(0.261658, 0.269196, 0.19458)
@@ -9,16 +10,47 @@ size = Vector3(0.261658, 0.269196, 0.19458)
 size = Vector3(0.28717, 0.0988159, 0.100403)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yfktb"]
-size = Vector3(0.217712, 0.313049, 0.264832)
+size = Vector3(0.258469, 0.310928, 0.264832)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o2rwp"]
+size = Vector3(0.111084, 0.253479, 0.166412)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nxe4y"]
 radius = 0.202878
 height = 0.854276
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c5f17"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jujrv"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fuj46"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gt7q1"]
+advance_mode = 2
+advance_condition = &"die"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_460l6"]
+states/die/node = SubResource("AnimationNodeAnimation_c5f17")
+states/die/position = Vector2(436, 166)
+states/idle/node = SubResource("AnimationNodeAnimation_jujrv")
+states/idle/position = Vector2(333, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_fuj46"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_gt7q1")]
+
 [node name="character-zombie" instance=ExtResource("1_r2ort")]
+script = ExtResource("2_3p6d0")
+
+[node name="Skeleton3D" parent="." index="0"]
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0, 0, 0)
+bones/1/position = Vector3(0, 0.1, 0)
+bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/3/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+bones/4/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 
 [node name="torso" parent="Skeleton3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44382e-15, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -1.44382e-15, 0.1, -0.223184)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/torso" index="0"]
 
@@ -27,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000152588, 0.135788, 0.0018
 shape = SubResource("BoxShape3D_u6gmj")
 
 [node name="arm-left" parent="Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.423184, 0.0025)
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.15, 0.1025, -0.423184)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/arm-left" index="1"]
 
@@ -36,7 +68,7 @@ transform = Transform3D(0.979533, 0, -0.201283, 0, 1, 0, 0.201283, 0, 0.979533, 
 shape = SubResource("BoxShape3D_u0d8n")
 
 [node name="arm-right" parent="Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0.423184, 0.0025)
+transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, -0.15, 0.1025, -0.423184)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/arm-right" index="1"]
 
@@ -45,20 +77,37 @@ transform = Transform3D(-0.967546, 0, -0.252694, 0, 1, 0, 0.252694, 0, -0.967546
 shape = SubResource("BoxShape3D_u0d8n")
 
 [node name="head" parent="Skeleton3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88765e-15, 0.483184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -2.88765e-15, 0.1, -0.483184)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/head" index="1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/head/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00253296, 0.149261, -0.000579834)
+[node name="headC" type="CollisionShape3D" parent="Skeleton3D/head/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.34058e-05, 0.154442, -0.000579834)
 shape = SubResource("BoxShape3D_yfktb")
 
 [node name="leg-right" parent="Skeleton3D" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.074204, 0.1, -0.223184)
+
+[node name="Area3D" type="Area3D" parent="Skeleton3D/leg-right" index="1"]
+
+[node name="rightLegC" type="CollisionShape3D" parent="Skeleton3D/leg-right/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00158691, -0.0931091, 0.00989506)
+shape = SubResource("BoxShape3D_o2rwp")
 
 [node name="leg-left" parent="Skeleton3D" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.074204, 0.1, -0.223184)
+
+[node name="Area3D" type="Area3D" parent="Skeleton3D/leg-left" index="1"]
+
+[node name="rightLegC" type="CollisionShape3D" parent="Skeleton3D/leg-left/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00753522, -0.0931091, 0.00989506)
+shape = SubResource("BoxShape3D_o2rwp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.371181, 0)
 shape = SubResource("CapsuleShape3D_nxe4y")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3"]
+tree_root = SubResource("AnimationNodeStateMachine_460l6")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/die = false

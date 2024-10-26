@@ -4,6 +4,7 @@ extends Node3D
 @export var ghost = preload("res://models/targets/character_ghost.tscn")
 @export var vampire = preload("res://models/targets/character_vampire.tscn")
 @export var skeleton = preload("res://models/targets/character_skeleton.tscn")
+@export var zombie = preload("res://models/targets/character_zombie.tscn")
 
 var targets = []
 var active_targets: Array[Node3D] = []
@@ -16,7 +17,7 @@ var grave_pos: Array[Node3D] = []
 func _ready() -> void:
 	
 	# Load the targets and grave positions
-	targets = [ghost, vampire, skeleton]
+	targets = [ghost, vampire, skeleton, zombie]
 	grave_pos = [$graves/grave, $graves/grave2, $graves/grave3, $graves/grave4, 
 				$graves/grave5, $graves/grave6, $graves/grave7, $graves/grave8, 
 				$graves/grave9, $graves/grave10, $graves/grave11, $graves/grave12, 

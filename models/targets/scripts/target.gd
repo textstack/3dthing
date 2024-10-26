@@ -40,6 +40,26 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body == player or body.name == "enemyCollider":
 		Global.score += 1
 		play_death_animation()
+		
+		# Disconnect signals to prevent further interactions
+		disconnect_area_signals(self)
+		
+		# Wait for the death animation to complete
 		await get_tree().create_timer(1.0).timeout
+		
+		# Free the target from the scene
 		queue_free()
-		main_scene.spawn_rand()
+
+		# Notify the main scene to spawn a new target
+		if main_scene:
+			main_scene.spawn_rand()
+
+# Disconnect area signals for cleanup
+func disconnect_area_signals(node: Node):
+	for child in node.get_children():
+		if child is Area3D:
+			child.body_entered.disconnect(_on_area_3d_body_entered)
+		elif child.has_method("get_children"):
+			# Recursively go through children 
+			disconnect_area_signals(child)
+		

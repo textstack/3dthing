@@ -1766,3 +1766,9 @@ transform = Transform3D(2.75971, 0, 1.17643, 0, 3, 0, -1.17643, 0, 2.75971, -1.9
 
 [node name="pumpkin-tall" parent="deco" instance=ExtResource("22_igwyh")]
 transform = Transform3D(2.06965, 0, -2.17176, 0, 3, 0, 2.17176, 0, 2.06965, 1.47265, 0.690307, -7.43075)
+
+[node name="spawn_timer" type="Timer" parent="."]
+process_mode = 1
+wait_time = 3.0
+
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
