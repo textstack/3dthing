@@ -37,7 +37,7 @@ func spawn_rand():
 	if grave_pos.size() > 0:
 		var rand_grave: Node3D
 		var attempts = 0
-		var max_attempts = 10  # Prevent infinite loop
+		var max_attempts = 20  # Prevent infinite loop
 
 		# Keep selecting a random grave until an unoccupied one is found
 		while attempts < max_attempts:
