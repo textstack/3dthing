@@ -9,6 +9,7 @@ extends Node3D
 var targets = []
 var active_targets: Array[Node3D] = []
 var grave_pos: Array[Node3D] = []
+var occupied_graves = {}
 
 @export var player: Node3D  # Reference to the player node
 @export var max_targets = 5
@@ -23,7 +24,8 @@ func _ready() -> void:
 				$graves/grave9, $graves/grave10, $graves/grave11, $graves/grave12, 
 				$graves/grave13, $graves/grave14, $graves/grave15, $graves/grave16, 
 				$graves/grave17, $graves/grave18, $graves/grave19, $graves/grave20]
-
+	for grave in grave_pos:
+		occupied_graves[grave] = false  # Mark each grave as unoccupied
 	spawn_rand()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,7 +35,23 @@ func _process(delta: float) -> void:
 		
 func spawn_rand():
 	if grave_pos.size() > 0:
-		var rand_grave = grave_pos[randi() % grave_pos.size()]
+		var rand_grave: Node3D
+		var attempts = 0
+		var max_attempts = 10  # Prevent infinite loop
+
+		# Keep selecting a random grave until an unoccupied one is found
+		while attempts < max_attempts:
+			rand_grave = grave_pos[randi() % grave_pos.size()]
+			if not occupied_graves[rand_grave]:  # Check if the grave is unoccupied
+				break  # Found an unoccupied grave
+			attempts += 1
+
+		if attempts == max_attempts:
+			print("No available graves to spawn a target.")
+			return  # Exit if no available grave was found
+
+		# Mark the grave as occupied
+		occupied_graves[rand_grave] = true
 	
 		# Choose a random target
 		var rand_target = targets[randi() % targets.size()]
@@ -46,7 +64,11 @@ func spawn_rand():
 		target_instance.player = player
 		target_instance.main_scene = self
 		add_child(target_instance)
+		max_targets
 
 		# Make the target look at the player
 		target_instance.look_at_player()
 		
+
+func _on_spawn_timer_timeout() -> void:
+	spawn_rand()
