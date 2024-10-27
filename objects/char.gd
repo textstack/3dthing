@@ -18,6 +18,7 @@ var t_bob = 0.0
 var initial_camera_position: Vector3
 
 func _ready():
+	$UserInterface/CanvasLayer/EscapeMenu.resume()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	# Store the initial camera position
 	initial_camera_position = $Camera3D.transform.origin
@@ -65,14 +66,18 @@ func _physics_process(delta: float) -> void:
 	$Camera3D.transform.origin = initial_camera_position + _headbob(t_bob)
 	
 	move_and_slide()
-	
+
 
 func _process(delta: float) -> void:
-	
+	if Input.is_action_just_pressed("Quit"):
+		$UserInterface/CanvasLayer/EscapeMenu.pause()
+
 	if Input.is_action_just_pressed("shoot"):
 		_shoot()
-		
+
+
 func _shoot() -> void:
+	Global.attacks += 1
 	var camera = $Camera3D # Gets Camera of player
 	var space_state = camera.get_world_3d().direct_space_state # Tales camera 3d state
 	var screen_center = get_viewport().size / 2 # Finds center of that camera

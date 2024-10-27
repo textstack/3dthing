@@ -14,12 +14,8 @@ func _ready() -> void:
 				$graves/grave17, $graves/grave18, $graves/grave19, $graves/grave20]
 
 	spawn_ghost()
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Quit"):
-		get_tree().quit()
-		
+
+
 func spawn_ghost():
 	if grave_pos.size() > 0:
 		var random_grave = grave_pos[randi() % grave_pos.size()]
