@@ -1,0 +1,2 @@
+extends target
+class_name vampire_target

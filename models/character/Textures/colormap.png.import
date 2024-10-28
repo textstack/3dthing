@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cijlx45odau6u"
-path.s3tc="res://.godot/imported/colormap.png-7e16ad536612b0bfd66f7a12a77ff550.s3tc.ctex"
+uid="uid://ccak26euxkqs7"
+path.s3tc="res://.godot/imported/colormap.png-8f624bddf61a9420e64bda7c9b402cb9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/walls/Textures/colormap.png"
-dest_files=["res://.godot/imported/colormap.png-7e16ad536612b0bfd66f7a12a77ff550.s3tc.ctex"]
+source_file="res://models/character/Textures/colormap.png"
+dest_files=["res://.godot/imported/colormap.png-8f624bddf61a9420e64bda7c9b402cb9.s3tc.ctex"]
 
 [params]
 
