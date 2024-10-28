@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://objects/hud.gd" id="2_hvevh"]
 [ext_resource type="PackedScene" uid="uid://cnlhojoqh0egm" path="res://objects/revolver.tscn" id="2_n6ib1"]
 [ext_resource type="Script" path="res://objects/reticle.gd" id="2_vgibe"]
+[ext_resource type="PackedScene" uid="uid://dg8g7t3epu8d6" path="res://escape_menu/escape_menu.tscn" id="3_grhs8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hfjb8"]
 
@@ -81,6 +82,15 @@ offset_right = 40.0
 grow_vertical = 0
 
 [node name="Score" type="Label" parent="UserInterface/Control"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
 offset_right = 40.0
-offset_bottom = 23.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UserInterface"]
+
+[node name="EscapeMenu" parent="UserInterface/CanvasLayer" instance=ExtResource("3_grhs8")]
