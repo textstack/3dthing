@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 	
 func flash():
 	light_energy = randf()
-	await get_tree().create_timer(randf_range(0.05, 0.1)).timeout
+	await get_tree().create_timer(randf_range(0.05, 1.0)).timeout
 	flash()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c18oolkp8slnl"]
+[gd_scene load_steps=30 format=3 uid="uid://c18oolkp8slnl"]
 
 [ext_resource type="Script" path="res://areas/main.gd" id="1_f235p"]
 [ext_resource type="Texture2D" uid="uid://c8sn3ubtfx2aa" path="res://textures/ground.jpg" id="2_dhdhe"]
@@ -18,9 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://bb347bhylfbqx" path="res://models/trees/pine.tscn" id="17_ixunp"]
 [ext_resource type="PackedScene" uid="uid://cbvcqlww8qrf1" path="res://models/trees/pine_crooked.tscn" id="18_r0s6e"]
 [ext_resource type="PackedScene" uid="uid://bui61ndspbpmb" path="res://models/deco/pumpkin_carved.tscn" id="19_28rv2"]
+[ext_resource type="Theme" uid="uid://cndx6qjdufwt6" path="res://themes/button_theme.tres" id="20_5scax"]
 [ext_resource type="Script" path="res://title_screen/title_buttons.gd" id="20_8ex6k"]
 [ext_resource type="PackedScene" uid="uid://dfaiqy2jh6p1x" path="res://models/deco/pumpkin_tall.tscn" id="20_qmimg"]
 [ext_resource type="FontFile" uid="uid://dsfykyyx0om7" path="res://fonts/DoubleHomicide.ttf" id="21_hvyin"]
+[ext_resource type="AudioStream" uid="uid://ryrw5ok74gj0" path="res://sfx/title_screen.mp3" id="22_e48lv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5pyja"]
 size = Vector3(25, 1, 25)
@@ -1779,28 +1781,34 @@ transform = Transform3D(2.06965, 0, -2.17176, 0, 3, 0, 2.17176, 0, 2.06965, 1.47
 transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, -0.201833, 1.82303, -0.673512)
 
 [node name="title_buttons" type="VBoxContainer" parent="."]
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.558
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -131.0
-offset_top = -33.0
-offset_right = 131.0
-offset_bottom = 33.0
+anchor_bottom = 0.636
+offset_left = -242.0
+offset_top = -52.64
+offset_right = 242.0
+offset_bottom = 38.12
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("20_5scax")
+theme_override_constants/separation = 25
 script = ExtResource("20_8ex6k")
 
 [node name="start" type="Button" parent="title_buttons"]
 layout_mode = 2
-text = "Start"
+theme_override_fonts/font = ExtResource("21_hvyin")
+theme_override_font_sizes/font_size = 50
+text = "START"
 
 [node name="quit" type="Button" parent="title_buttons"]
 layout_mode = 2
-text = "Quit"
+theme_override_fonts/font = ExtResource("21_hvyin")
+theme_override_font_sizes/font_size = 45
+text = "QUIT"
 
 [node name="title" type="Label" parent="."]
 anchors_preset = 8
@@ -1820,6 +1828,9 @@ theme_override_constants/shadow_outline_size = 400
 theme_override_fonts/font = ExtResource("21_hvyin")
 theme_override_font_sizes/font_size = 270
 text = "ScaryAim"
+
+[node name="music" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("22_e48lv")
 
 [connection signal="pressed" from="title_buttons/start" to="title_buttons" method="_on_start_pressed"]
 [connection signal="pressed" from="title_buttons/quit" to="title_buttons" method="_on_quit_pressed"]
