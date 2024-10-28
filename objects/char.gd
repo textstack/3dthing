@@ -103,7 +103,6 @@ func _test_raycast(position: Vector3) -> void:
 	await get_tree().create_timer(.1).timeout
 	instance.queue_free()
 	
-
 # Function to calculate head bob
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO

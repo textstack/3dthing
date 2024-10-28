@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c6b6p0tq65me1"]
+[gd_scene load_steps=28 format=3 uid="uid://c6b6p0tq65me1"]
 
 [ext_resource type="PackedScene" uid="uid://nemvqo0hunnq" path="res://objects/char.tscn" id="1_8jn0i"]
 [ext_resource type="Script" path="res://areas/main.gd" id="1_yugsj"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ckwdoxgdor3tr" path="res://models/ground and rocks/road_2.tscn" id="5_ri1fe"]
 [ext_resource type="PackedScene" uid="uid://bpkuhft1gbtju" path="res://models/walls/brick_wall_2.tscn" id="6_3ndpa"]
 [ext_resource type="PackedScene" uid="uid://bb347bhylfbqx" path="res://models/trees/pine.tscn" id="6_sejtt"]
+[ext_resource type="PackedScene" uid="uid://c54f0cggnlo3d" path="res://models/character/character_digger.tscn" id="6_spybc"]
 [ext_resource type="PackedScene" uid="uid://bh4ian63f41va" path="res://models/walls/brick_wall_end_2.tscn" id="7_upoe5"]
 [ext_resource type="PackedScene" uid="uid://bkb8xngjcvg46" path="res://models/graves/grave.tscn" id="8_wdkc8"]
 [ext_resource type="PackedScene" uid="uid://dmmv742myvlx" path="res://models/light/lightpost_single.tscn" id="9_rv1yf"]
@@ -17,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://l1vfrbvi1ayr" path="res://models/graves/gravestone_roof.tscn" id="13_aaebe"]
 [ext_resource type="PackedScene" uid="uid://ccigw0b5pjlt3" path="res://models/graves/gravestone_cross.tscn" id="14_dcean"]
 [ext_resource type="PackedScene" uid="uid://cbvcqlww8qrf1" path="res://models/trees/pine_crooked.tscn" id="20_kmaa2"]
+[ext_resource type="AudioStream" uid="uid://cilp2otctqd6g" path="res://sfx/in_game.mp3" id="21_ca3sp"]
 [ext_resource type="PackedScene" uid="uid://bui61ndspbpmb" path="res://models/deco/pumpkin_carved.tscn" id="21_mn35r"]
 [ext_resource type="PackedScene" uid="uid://dfaiqy2jh6p1x" path="res://models/deco/pumpkin_tall.tscn" id="22_igwyh"]
 
@@ -66,7 +68,7 @@ adjustment_saturation = 0.6
 [node name="Main" type="Node3D" node_paths=PackedStringArray("player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2256, 0)
 script = ExtResource("1_yugsj")
-player = NodePath("Char")
+player = NodePath("character-digger")
 
 [node name="ground" type="StaticBody3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0227556, -0.470992, -0.00648165)
@@ -484,6 +486,10 @@ transform = Transform3D(0.749701, 0, -0.0211768, 0, 0.75, 0, 0.0211768, 0, 0.749
 
 [node name="Char" parent="." instance=ExtResource("1_8jn0i")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.584376, 0)
+visible = false
+
+[node name="character-digger" parent="." instance=ExtResource("6_spybc")]
+transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 0.797073, -3.31541)
 
 [node name="crypt" parent="." instance=ExtResource("4_jm7hv")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.172195, 0.5, -10.5694)
@@ -1766,3 +1772,8 @@ transform = Transform3D(2.75971, 0, 1.17643, 0, 3, 0, -1.17643, 0, 2.75971, -1.9
 
 [node name="pumpkin-tall" parent="deco" instance=ExtResource("22_igwyh")]
 transform = Transform3D(2.06965, 0, -2.17176, 0, 3, 0, 2.17176, 0, 2.06965, 1.47265, 0.690307, -7.43075)
+
+[node name="music" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("21_ca3sp")
+volume_db = -0.105
+max_db = 1.645

@@ -12,8 +12,13 @@ var grave_pos: Array[Node3D] = []
 var occupied_graves = {}
 @export var player: Node3D  # Reference to the player node
 @export var spawn_delay: float = 1.0  # Time between spawn attempts
+const CAMERA = preload("res://models/character/CameraEnum.gd") # Camera enums
+var current_cam = CAMERA.FIRST
+
+@onready var cams = [$"character-digger/FIRST", $"character-digger/AIM"]
 
 func _ready() -> void:
+	$music.play()
 	# Load the targets and grave positions
 	targets = [ghost, vampire, skeleton, zombie]
 	grave_pos = [$graves/grave, $graves/grave2, $graves/grave3, $graves/grave4, 
@@ -36,9 +41,21 @@ func _ready() -> void:
 	spawn_rand()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Quit"):
+	if Input.is_action_just_pressed("Pause"):
 		get_tree().quit()
-	
+		
+	if Input.is_action_pressed("Aim"):
+		if current_cam == CAMERA.FIRST:
+			current_cam = CAMERA.AIM
+			$"character-digger".current_cam = CAMERA.AIM
+		cams[current_cam].current = true
+		
+	if Input.is_action_just_released("Aim"):
+		if current_cam == CAMERA.AIM:
+			current_cam = CAMERA.FIRST
+			$"character-digger".current_cam = CAMERA.FIRST
+		cams[current_cam].current = true
+
 	# Clean up destroyed targets and free their graves
 	for target in active_targets.keys():
 		if !is_instance_valid(target) or target.is_queued_for_deletion():
