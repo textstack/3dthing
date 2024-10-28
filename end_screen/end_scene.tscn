@@ -1,0 +1,129 @@
+[gd_scene load_steps=5 format=3 uid="uid://xaprkubtxbo8"]
+
+[ext_resource type="Script" path="res://end_screen/end_scene.gd" id="1_12cay"]
+[ext_resource type="FontFile" uid="uid://dsfykyyx0om7" path="res://fonts/DoubleHomicide.ttf" id="1_rl27m"]
+[ext_resource type="Theme" uid="uid://cndx6qjdufwt6" path="res://themes/button_theme.tres" id="3_y4sd2"]
+[ext_resource type="FontFile" uid="uid://c3mlf2cexcx52" path="res://fonts/KiwiSoda.ttf" id="4_wrs7s"]
+
+[node name="EndScene" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_12cay")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -985.0
+offset_top = -559.0
+offset_right = 995.0
+offset_bottom = 555.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -490.0
+offset_top = -500.0
+offset_right = 490.0
+offset_bottom = -169.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_rl27m")
+theme_override_font_sizes/font_size = 250
+text = "GAME OVER"
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = 160.0
+offset_right = 272.0
+offset_bottom = 411.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_y4sd2")
+theme_override_constants/separation = 50
+
+[node name="Restart" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_wrs7s")
+theme_override_font_sizes/font_size = 60
+text = "RESTART"
+
+[node name="Quit" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_wrs7s")
+theme_override_font_sizes/font_size = 60
+text = "QUIT
+"
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = -180.0
+offset_right = 168.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_wrs7s")
+theme_override_font_sizes/font_size = 40
+text = "SCORE: 0"
+horizontal_alignment = 1
+
+[node name="AccuracyLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -206.0
+offset_top = -120.0
+offset_right = 206.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_wrs7s")
+theme_override_font_sizes/font_size = 40
+text = "ACCURACY: 0%"
+horizontal_alignment = 1
+
+[node name="HighscoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -325.0
+offset_top = -35.5
+offset_right = 325.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_wrs7s")
+theme_override_font_sizes/font_size = 70
+text = "HIGHSCORE: 0"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Buttons/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]

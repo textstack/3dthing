@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dg8g7t3epu8d6"]
+[gd_scene load_steps=6 format=3 uid="uid://dg8g7t3epu8d6"]
 
 [ext_resource type="Script" path="res://escape_menu/escape_menu.gd" id="1_tsqvt"]
+[ext_resource type="Theme" uid="uid://cndx6qjdufwt6" path="res://themes/button_theme.tres" id="2_j8lst"]
+[ext_resource type="FontFile" uid="uid://dsfykyyx0om7" path="res://fonts/DoubleHomicide.ttf" id="3_vkotr"]
+[ext_resource type="FontFile" uid="uid://c3mlf2cexcx52" path="res://fonts/KiwiSoda.ttf" id="4_ogj71"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iusqy"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -29,9 +32,11 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_iusqy")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 116.0
-offset_bottom = 321.0
+offset_top = 175.0
+offset_bottom = 380.0
 grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_vkotr")
 theme_override_font_sizes/normal_font_size = 150
 bbcode_enabled = true
 text = "[center]PAUSED"
@@ -51,27 +56,32 @@ offset_right = 298.5
 offset_bottom = 306.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_j8lst")
 theme_override_constants/separation = 40
 alignment = 1
 
 [node name="Continue" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ogj71")
 theme_override_font_sizes/font_size = 40
 text = "CONTINUE
 "
 
 [node name="Reset" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ogj71")
 theme_override_font_sizes/font_size = 40
 text = "RESET"
 
 [node name="MainMenu" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ogj71")
 theme_override_font_sizes/font_size = 40
 text = "MAIN MENU"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ogj71")
 theme_override_font_sizes/font_size = 40
 text = "QUIT"
 
