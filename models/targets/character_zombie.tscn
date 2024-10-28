@@ -43,14 +43,14 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 script = ExtResource("2_3p6d0")
 
 [node name="Skeleton3D" parent="." index="0"]
-transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0, 0, 0)
-bones/1/position = Vector3(0, 0.1, 0)
-bones/1/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/3/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/4/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
+transform = Transform3D(-2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 0, 0, 0)
+bones/2/rotation = Quaternion(0.042138, 0, 0, 0.999112)
+bones/3/rotation = Quaternion(0, 0, -0.263113, 0.964765)
+bones/4/rotation = Quaternion(0, 0, 0.263113, 0.964765)
+bones/5/rotation = Quaternion(0, -0.042138, 0, 0.999112)
 
 [node name="torso" parent="Skeleton3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -1.44382e-15, 0.1, -0.223184)
+transform = Transform3D(1, 0, 0, 0, 0.996449, -0.0842012, 0, 0.0842012, 0.996449, -1.44382e-15, 0.223184, -7.21911e-16)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/torso" index="0"]
 
@@ -59,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000152588, 0.135788, 0.0018
 shape = SubResource("BoxShape3D_u6gmj")
 
 [node name="arm-left" parent="Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 0.15, 0.1025, -0.423184)
+transform = Transform3D(0.861543, 0.507685, 0, -0.505882, 0.858483, -0.0842012, -0.0427476, 0.0725429, 0.996449, 0.15, 0.422263, 0.0193314)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/arm-left" index="1"]
 
@@ -68,7 +68,7 @@ transform = Transform3D(0.979533, 0, -0.201283, 0, 1, 0, 0.201283, 0, 0.979533, 
 shape = SubResource("BoxShape3D_u0d8n")
 
 [node name="arm-right" parent="Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, -0.15, 0.1025, -0.423184)
+transform = Transform3D(0.861543, -0.507685, 0, 0.505882, 0.858483, -0.0842012, 0.0427476, 0.0725429, 0.996449, -0.15, 0.422263, 0.0193314)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/arm-right" index="1"]
 
@@ -77,7 +77,7 @@ transform = Transform3D(-0.967546, 0, -0.252694, 0, 1, 0, 0.252694, 0, -0.967546
 shape = SubResource("BoxShape3D_u0d8n")
 
 [node name="head" parent="Skeleton3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -2.88765e-15, 0.1, -0.483184)
+transform = Transform3D(0.996449, 0, -0.0842012, -0.00708984, 0.996449, -0.0839022, 0.0839022, 0.0842012, 0.99291, -2.88765e-15, 0.482261, 0.0218923)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/head" index="1"]
 
@@ -86,7 +86,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.34058e-05, 0.154442, -0.00
 shape = SubResource("BoxShape3D_yfktb")
 
 [node name="leg-right" parent="Skeleton3D" index="4"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -0.074204, 0.1, -0.223184)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.074204, 0.223184, -7.21911e-16)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/leg-right" index="1"]
 
@@ -95,7 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00158691, -0.0931091, 0.009
 shape = SubResource("BoxShape3D_o2rwp")
 
 [node name="leg-left" parent="Skeleton3D" index="5"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0.074204, 0.1, -0.223184)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.074204, 0.223184, -7.21911e-16)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/leg-left" index="1"]
 

@@ -50,6 +50,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		# Wait for the death animation to complete
 		await get_tree().create_timer(1.0).timeout
 		
+		emit_signal("target_shot", self)
 		# Free the target from the scene
 		queue_free()
 		
