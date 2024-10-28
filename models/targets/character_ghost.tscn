@@ -43,12 +43,12 @@ script = ExtResource("2_pfchm")
 
 [node name="Skeleton3D" parent="." index="0"]
 transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0, 0, 0)
-bones/2/rotation = Quaternion(0.00600535, 0, 0, 0.999982)
-bones/3/rotation = Quaternion(0, 0, -0.377151, 0.926152)
-bones/4/rotation = Quaternion(0, 0, 0.377151, 0.926152)
+bones/2/rotation = Quaternion(0.0325092, 0, 0, 0.999471)
+bones/3/rotation = Quaternion(0, 0, -0.30284, 0.953042)
+bones/4/rotation = Quaternion(0, 0, 0.30284, 0.953042)
 
 [node name="torso" parent="Skeleton3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.999928, -0.0120105, 0, 0.0120105, 0.999928, -1.44382e-15, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0.997886, -0.0649841, 0, 0.0649841, 0.997886, -1.44382e-15, 0.223184, -7.21911e-16)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/torso" index="1" groups=["enemy"]]
 script = ExtResource("3_tfx05")
@@ -58,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00135803, 0.205185, -0.009
 shape = SubResource("BoxShape3D_btxe5")
 
 [node name="arm-left" parent="Skeleton3D" index="1"]
-transform = Transform3D(0.715515, 0.698598, 0, -0.698548, 0.715463, -0.0120105, -0.00839049, 0.00859367, 0.999928, 0.15, 0.448138, 0.00520218)
+transform = Transform3D(0.816576, 0.577237, 0, -0.576017, 0.814851, -0.0649841, -0.0375113, 0.0530645, 0.997886, 0.15, 0.447546, 0.0171161)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/arm-left" index="1" groups=["enemy"]]
 script = ExtResource("3_tfx05")
@@ -68,7 +68,7 @@ transform = Transform3D(0.972403, 0, -0.23331, 0, 1, 0, 0.23331, 0, 0.972403, 0.
 shape = SubResource("BoxShape3D_r1ix3")
 
 [node name="arm-right" parent="Skeleton3D" index="2"]
-transform = Transform3D(0.715515, -0.698598, 0, 0.698548, 0.715463, -0.0120105, 0.00839049, 0.00859367, 0.999928, -0.15, 0.448138, 0.00520218)
+transform = Transform3D(0.816576, -0.577237, 0, 0.576017, 0.814851, -0.0649841, 0.0375113, 0.0530645, 0.997886, -0.15, 0.447546, 0.0171161)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/arm-right" index="1" groups=["enemy"]]
 collision_layer = 2
