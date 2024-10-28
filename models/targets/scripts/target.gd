@@ -14,7 +14,7 @@ func _ready():
 	# Connect all body parts
 	connect_area_signals(self)
 
-func _process(delta):
+func _process(_delta):
 	look_at_player()
 
 func look_at_player():

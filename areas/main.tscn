@@ -1,6 +1,5 @@
-[gd_scene load_steps=28 format=3 uid="uid://c6b6p0tq65me1"]
+[gd_scene load_steps=27 format=3 uid="uid://c6b6p0tq65me1"]
 
-[ext_resource type="PackedScene" uid="uid://nemvqo0hunnq" path="res://objects/char.tscn" id="1_8jn0i"]
 [ext_resource type="Script" path="res://areas/main.gd" id="1_yugsj"]
 [ext_resource type="Texture2D" uid="uid://c8sn3ubtfx2aa" path="res://textures/ground.jpg" id="2_g4q0v"]
 [ext_resource type="PackedScene" uid="uid://cuhj32lpiia4d" path="res://models/crypt/crypt.tscn" id="4_jm7hv"]
@@ -483,10 +482,6 @@ transform = Transform3D(0.749701, 0, -0.0211768, 0, 0.75, 0, 0.0211768, 0, 0.749
 
 [node name="brick-wall14" parent="ground" instance=ExtResource("6_3ndpa")]
 transform = Transform3D(0.749701, 0, -0.0211768, 0, 0.75, 0, 0.0211768, 0, 0.749701, 1.81837, 0.5, -7.40674)
-
-[node name="Char" parent="." instance=ExtResource("1_8jn0i")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.584376, 0)
-visible = false
 
 [node name="character-digger" parent="." instance=ExtResource("6_spybc")]
 transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 0.797073, -3.31541)

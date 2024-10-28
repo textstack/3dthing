@@ -40,10 +40,7 @@ func _ready() -> void:
 	# Initial spawn
 	spawn_rand()
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Pause"):
-		get_tree().quit()
-		
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("Aim"):
 		if current_cam == CAMERA.FIRST:
 			current_cam = CAMERA.AIM
@@ -57,11 +54,11 @@ func _process(delta: float) -> void:
 		cams[current_cam].current = true
 
 	# Clean up destroyed targets and free their graves
-	for target in active_targets.keys():
-		if !is_instance_valid(target) or target.is_queued_for_deletion():
-			var grave = active_targets[target]
+	for target1 in active_targets.keys():
+		if !is_instance_valid(target1) or target1.is_queued_for_deletion():
+			var grave = active_targets[target1]
 			occupied_graves[grave] = false  # Free up the grave
-			active_targets.erase(target)
+			active_targets.erase(target1)
 
 func spawn_rand():
 	if grave_pos.size() > 0:
