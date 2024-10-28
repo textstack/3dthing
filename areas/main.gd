@@ -11,7 +11,7 @@ var active_targets: Dictionary = {}  # Changed to Dictionary to store target-gra
 var grave_pos: Array[Node3D] = []
 var occupied_graves = {}
 @export var player: Node3D  # Reference to the player node
-@export var spawn_delay: float = 2.0  # Time between spawn attempts
+@export var spawn_delay: float = 1.0  # Time between spawn attempts
 
 func _ready() -> void:
 	# Load the targets and grave positions
