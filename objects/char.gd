@@ -14,6 +14,9 @@ const BOB_FREQ = 2.4
 const BOB_AMP = 0.08
 var t_bob = 0.0
 
+# Gun Variables
+@onready var gun_ani = $Camera3D/Revolver/Revovler_38/AnimationPlayer
+
 # Store the initial camera position
 var initial_camera_position: Vector3
 
@@ -22,7 +25,6 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	# Store the initial camera position
 	initial_camera_position = $Camera3D.transform.origin
-	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -73,7 +75,11 @@ func _process(delta: float) -> void:
 		$UserInterface/CanvasLayer/EscapeMenu.pause()
 
 	if Input.is_action_just_pressed("shoot"):
-		_shoot()
+		#Check if animation is already playing
+		if !gun_ani.is_playing():
+			gun_ani.play("shoot")
+			_shoot()
+			get_tree().create_timer(0.3)
 
 
 func _shoot() -> void:
@@ -101,7 +107,6 @@ func _test_raycast(position: Vector3) -> void:
 	await get_tree().create_timer(.1).timeout
 	instance.queue_free()
 	
-
 # Function to calculate head bob
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO

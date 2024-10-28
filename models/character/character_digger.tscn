@@ -1,0 +1,196 @@
+[gd_scene load_steps=16 format=3 uid="uid://c54f0cggnlo3d"]
+
+[ext_resource type="PackedScene" uid="uid://8h8w52l6koc4" path="res://models/character/character-digger.glb" id="1_0r027"]
+[ext_resource type="Script" path="res://models/character/character_digger.gd" id="2_e44py"]
+[ext_resource type="PackedScene" uid="uid://cnlhojoqh0egm" path="res://objects/revolver.tscn" id="2_gxk7o"]
+[ext_resource type="Script" path="res://objects/hud.gd" id="3_asrny"]
+[ext_resource type="AudioStream" uid="uid://dxciboo08stcp" path="res://sfx/single-gun-shot-sound-fx.wav" id="3_j021y"]
+[ext_resource type="Script" path="res://objects/reticle.gd" id="4_vnox0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xwii"]
+size = Vector3(0.119171, 0.222473, 0.18219)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1eweq"]
+size = Vector3(0.263153, 0.25853, 0.194885)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4tly7"]
+size = Vector3(0.277405, 0.0927105, 0.107666)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_reo27"]
+size = Vector3(0.25, 0.204254, 0.267578)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e4tdi"]
+radius = 0.17091
+height = 0.832749
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k5mhp"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_428bt"]
+animation = &"holding-right-shoot"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_o5drt"]
+filter_enabled = true
+filters = ["Skeleton3D:leg-left", "Skeleton3D:leg-right"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5v22q"]
+graph_offset = Vector2(-154.714, -34.0118)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_428bt")
+nodes/Animation/position = Vector2(60, -20)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_k5mhp")
+"nodes/Animation 2/position" = Vector2(20, 160)
+nodes/output/position = Vector2(700, 60)
+nodes/walking/node = SubResource("AnimationNodeBlend2_o5drt")
+nodes/walking/position = Vector2(420, 40)
+node_connections = [&"output", 0, &"walking", &"walking", 0, &"Animation", &"walking", 1, &"Animation 2"]
+
+[node name="character-digger" instance=ExtResource("1_0r027")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+script = ExtResource("2_e44py")
+
+[node name="shot_sound" type="AudioStreamPlayer3D" parent="." index="0"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0.0962215, 0.877, -0.228)
+stream = ExtResource("3_j021y")
+volume_db = -12.387
+
+[node name="AIM" type="Camera3D" parent="." index="1"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0.340016, 0.847898, -0.512469)
+cull_mask = 1048573
+current = true
+
+[node name="FIRST" type="Camera3D" parent="." index="2"]
+transform = Transform3D(0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0.0962215, 0.917657, -0.228)
+cull_mask = 1048573
+current = true
+
+[node name="Skeleton3D" parent="." index="3"]
+transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 0, 0)
+bones/2/rotation = Quaternion(0.0431382, 0, 0, 0.999069)
+bones/3/rotation = Quaternion(-0.0431382, 0, 0, 0.999069)
+bones/5/rotation = Quaternion(0, 0, -0.382683, 0.92388)
+bones/6/rotation = Quaternion(0, 0.5, 0, 0.866025)
+
+[node name="leg-left" parent="Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.996278, -0.086196, 0, 0.086196, 0.996278, 0.074204, 0.223184, -7.21911e-16)
+
+[node name="Area3D" type="Area3D" parent="Skeleton3D/leg-left" index="1"]
+
+[node name="leftLegC" type="CollisionShape3D" parent="Skeleton3D/leg-left/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.145187, -0.113007, 0.00961304)
+shape = SubResource("BoxShape3D_0xwii")
+
+[node name="leg-right" parent="Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.996278, 0.086196, 0, -0.086196, 0.996278, -0.074204, 0.223184, -7.21911e-16)
+
+[node name="Area3D" type="Area3D" parent="Skeleton3D/leg-right" index="0"]
+
+[node name="rightLegC" type="CollisionShape3D" parent="Skeleton3D/leg-right/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.147582, -0.113007, 0.00961304)
+shape = SubResource("BoxShape3D_0xwii")
+
+[node name="torso" parent="Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44382e-15, 0.223184, -7.21911e-16)
+
+[node name="Area3D" type="Area3D" parent="Skeleton3D/torso" index="0"]
+
+[node name="torsoC" type="CollisionShape3D" parent="Skeleton3D/torso/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00111389, 0.131493, 0.00131226)
+shape = SubResource("BoxShape3D_1eweq")
+
+[node name="arm-left" parent="Skeleton3D" index="3"]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.15, 0.423184, 0.0025)
+
+[node name="Area3D" type="Area3D" parent="Skeleton3D/arm-left" index="0"]
+
+[node name="leftArmC" type="CollisionShape3D" parent="Skeleton3D/arm-left/Area3D" index="0"]
+transform = Transform3D(0.973535, 0, -0.228538, 0, 1, 0, 0.228538, 0, 0.973535, 0.121695, 0.0329466, 0.0124083)
+shape = SubResource("BoxShape3D_4tly7")
+
+[node name="arm-right" parent="Skeleton3D" index="4"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -0.15, 0.423184, 0.0025)
+
+[node name="Revolver" parent="Skeleton3D/arm-right" index="0" instance=ExtResource("2_gxk7o")]
+transform = Transform3D(-0.4, -3.04809e-08, 0.69282, 3.8147e-08, 0.8, 5.72204e-08, -0.69282, 6.16464e-08, -0.4, -0.34809, 0.06335, 0.111351)
+
+[node name="Area3D" type="Area3D" parent="Skeleton3D/arm-right" index="2"]
+
+[node name="rightArmC" type="CollisionShape3D" parent="Skeleton3D/arm-right/Area3D" index="0"]
+transform = Transform3D(-0.972023, 0, -0.234888, 0, 1, 0, 0.234888, 0, -0.972023, -0.118977, 0.0329466, 0.00732375)
+shape = SubResource("BoxShape3D_4tly7")
+
+[node name="head" parent="Skeleton3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88765e-15, 0.483184, -3.60956e-16)
+
+[node name="head" parent="Skeleton3D/head" index="0"]
+layers = 2
+
+[node name="Area3D" type="Area3D" parent="Skeleton3D/head" index="1"]
+
+[node name="headC" type="CollisionShape3D" parent="Skeleton3D/head/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00195313, 0.107407, 0.000976563)
+shape = SubResource("BoxShape3D_reo27")
+
+[node name="UserInterface" type="Control" parent="Skeleton3D" index="6"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("3_asrny")
+
+[node name="CenterContainer" type="CenterContainer" parent="Skeleton3D/UserInterface" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_vnox0")
+
+[node name="Top" type="Line2D" parent="Skeleton3D/UserInterface/CenterContainer" index="0"]
+points = PackedVector2Array(20, 15, 20, 5)
+width = 2.0
+
+[node name="Right" type="Line2D" parent="Skeleton3D/UserInterface/CenterContainer" index="1"]
+points = PackedVector2Array(25, 20, 35, 20)
+width = 2.0
+
+[node name="Bottom" type="Line2D" parent="Skeleton3D/UserInterface/CenterContainer" index="2"]
+points = PackedVector2Array(20, 25, 20, 35)
+width = 2.0
+
+[node name="Left" type="Line2D" parent="Skeleton3D/UserInterface/CenterContainer" index="3"]
+points = PackedVector2Array(15, 20, 5, 20)
+width = 2.0
+
+[node name="Control" type="Control" parent="Skeleton3D/UserInterface" index="1"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Score" type="Label" parent="Skeleton3D/UserInterface/Control" index="0"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00785753, 0.366716, 0.0047965)
+visible = false
+shape = SubResource("CapsuleShape3D_e4tdi")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="6"]
+tree_root = SubResource("AnimationNodeBlendTree_5v22q")
+anim_player = NodePath("../AnimationPlayer")
+parameters/walking/blend_amount = 1.0
