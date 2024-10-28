@@ -21,6 +21,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	# Store the initial camera position
 	initial_camera_position = $Camera3D.transform.origin
+	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
