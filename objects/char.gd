@@ -14,6 +14,9 @@ const BOB_FREQ = 2.4
 const BOB_AMP = 0.08
 var t_bob = 0.0
 
+# Gun Variables
+@onready var gun_ani = $Camera3D/Revolver/Revovler_38/AnimationPlayer
+
 # Store the initial camera position
 var initial_camera_position: Vector3
 
@@ -69,7 +72,12 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("shoot"):
-		_shoot()
+		
+		#Check if animation is already playing
+		if !gun_ani.is_playing():
+			gun_ani.play("shoot")
+			_shoot()
+			get_tree().create_timer(0.3)
 		
 func _shoot() -> void:
 	var camera = $Camera3D # Gets Camera of player

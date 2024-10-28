@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://nemvqo0hunnq"]
+[gd_scene load_steps=7 format=3 uid="uid://nemvqo0hunnq"]
 
 [ext_resource type="Script" path="res://objects/char.gd" id="1_6ugb3"]
 [ext_resource type="Script" path="res://objects/hud.gd" id="2_hvevh"]
+[ext_resource type="PackedScene" uid="uid://cnlhojoqh0egm" path="res://objects/revolver.tscn" id="2_n6ib1"]
 [ext_resource type="Script" path="res://objects/reticle.gd" id="2_vgibe"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hfjb8"]
@@ -25,6 +26,9 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 cull_mask = 1048573
 current = true
+
+[node name="Revolver" parent="Camera3D" instance=ExtResource("2_n6ib1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.414368, -0.239325, -0.528258)
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
