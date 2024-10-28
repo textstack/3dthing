@@ -1,2 +1,0 @@
-extends target
-class_name skellie_target
