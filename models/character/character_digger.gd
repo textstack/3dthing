@@ -78,7 +78,10 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Pause"):
+		$Skeleton3D/UserInterface/CanvasLayer/EscapeMenu.pause()
+	
 	if Input.is_action_just_pressed("shoot"):
 		if !gun_ani.is_playing():
 			gun_ani.play("shoot")
@@ -87,6 +90,7 @@ func _process(delta: float) -> void:
 
 func _shoot() -> void:
 	$shot_sound.play()
+	Global.attacks += 1
 	var camera
 	if (current_cam == CAMERA.FIRST):
 		camera = $FIRST
@@ -106,10 +110,10 @@ func _shoot() -> void:
 	else:
 		print("You missed")
 
-func _test_raycast(position: Vector3) -> void:
+func _test_raycast(pos: Vector3) -> void:
 	var instance = raycast_test.instantiate()
 	get_tree().root.add_child(instance)
-	instance.global_position = position
+	instance.global_position = pos
 	await get_tree().create_timer(.1).timeout
 	instance.queue_free()
 

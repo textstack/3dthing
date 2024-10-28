@@ -3,12 +3,12 @@ extends Control
 var showing = false
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if visible and not showing:
 		showing = true
 		return
 	
-	if Input.is_action_just_pressed("Quit") and showing:
+	if Input.is_action_just_pressed("Pause") and showing:
 		resume()
 
 

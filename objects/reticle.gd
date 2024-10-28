@@ -5,9 +5,7 @@ extends CenterContainer
 
 func _ready():
 	queue_redraw()
-	
-func process(delta):
-	pass
+
 
 func _draw():
 	draw_circle(Vector2(20,20), DOT_RADIUS, DOT_COLOR)
