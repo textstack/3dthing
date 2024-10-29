@@ -9,17 +9,6 @@ extends Control
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	## Create label settings
-	#var label_settings = LabelSettings.new()
-	#label_settings.font_size = 40
-	#var custom_font = load("res://fonts/KiwiSoda.ttf")
-	#label_settings.font = custom_font
-	#
-	## Apply settings to all labels
-	#score_label.label_settings = label_settings
-	#accuracy_label.label_settings = label_settings
-	#highscore_label.label_settings = label_settings
-	
 	# Calculate accuracy
 	var accuracy = 0.0
 	if Global.attacks > 0:
@@ -44,4 +33,4 @@ func _on_restart_pressed() -> void:
 	get_tree().change_scene_to_file("res://areas/main.tscn")
 
 func _on_quit_pressed() -> void:
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://title_screen/title_background.tscn")

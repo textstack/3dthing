@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2an8ahr2inqp"]
+[gd_scene load_steps=7 format=3 uid="uid://b2an8ahr2inqp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_26pli"]
 shading_mode = 0
@@ -11,6 +11,20 @@ height = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v8tlr"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mufv4"]
+albedo_color = Color(0.838097, 0.829037, 2.31028e-06, 1)
+emission_enabled = true
+emission = Color(0.14349, 1, 0.127226, 1)
+emission_energy_multiplier = 9.4
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r75um"]
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_7xqtv"]
+size = Vector3(0.1, 0.1, 0.1)
+
 [node name="enemyCollider" type="StaticBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -20,3 +34,13 @@ mesh = SubResource("SphereMesh_mjlku")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.205, 0, 0, 0, 0.205, 0, 0, 0, 0.205, 0, 0, 0)
 shape = SubResource("SphereShape3D_v8tlr")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0399911, 0.0840158)
+material_override = SubResource("StandardMaterial3D_mufv4")
+emitting = false
+one_shot = true
+explosiveness = 1.0
+randomness = 0.15
+process_material = SubResource("ParticleProcessMaterial_r75um")
+draw_pass_1 = SubResource("BoxMesh_7xqtv")
