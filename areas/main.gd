@@ -75,21 +75,21 @@ func spawn_rand():
 			
 		if attempts == max_attempts:
 			return  # Exit if no grave was found
-			
+		
 		# Mark the grave as occupied
 		occupied_graves[rand_grave] = true
 		
 		# Choose a random target
 		var rand_target = targets[randi() % targets.size()]
 		
-		# Instantiate
+		# Instantiate and add to the scene before setting its global_transform
 		var target_instance = rand_target.instantiate()
-		target_instance.global_transform.origin = rand_grave.global_transform.origin + Vector3(0, 0.5, 0)
+		add_child(target_instance)  # Add first, ensuring it's part of the tree
 		
-		# Set references
+		# Set the target's position and other properties after it's added
+		target_instance.global_transform.origin = rand_grave.global_transform.origin + Vector3(0, 0.3, 0)
 		target_instance.player = player
 		target_instance.main_scene = self
-		add_child(target_instance)
 		
 		# Store the target
 		active_targets[target_instance] = rand_grave
