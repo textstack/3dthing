@@ -24,13 +24,11 @@ func _ready() -> void:
 	highscore_label.text = "Highscore: " + str(Global.highscore)
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_restart_pressed() -> void:
 	Global.reset()
-	get_tree().change_scene_to_file("res://areas/main.tscn")
+	get_tree().change_scene_to_file("res://title_screen/title_background.tscn")
+	#get_tree().change_scene_to_file("res://areas/main.tscn")
+
 
 func _on_quit_pressed() -> void:
 	get_tree().change_scene_to_file("res://title_screen/title_background.tscn")

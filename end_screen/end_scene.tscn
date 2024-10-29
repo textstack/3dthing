@@ -65,7 +65,7 @@ theme_override_constants/separation = 50
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_wrs7s")
 theme_override_font_sizes/font_size = 60
-text = "RESTART"
+text = "MAIN MENU"
 
 [node name="Quit" type="Button" parent="Buttons"]
 layout_mode = 2

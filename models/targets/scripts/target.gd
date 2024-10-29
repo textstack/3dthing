@@ -41,7 +41,9 @@ func connect_area_signals(node: Node):
 # Handler for when a body enters an Area3D
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body == player or body.name == "enemyCollider":
-		Global.score += 1
+		if body != player:
+			Global.score += 1
+		
 		play_death_animation()
 		
 		# Disconnect signals to prevent further interactions

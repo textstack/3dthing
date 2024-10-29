@@ -66,13 +66,13 @@ current = true
 
 [node name="Skeleton3D" parent="." index="3"]
 transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 0, 0)
-bones/2/rotation = Quaternion(-0.0680384, 0, 0, 0.997683)
-bones/3/rotation = Quaternion(0.0680384, 0, 0, 0.997683)
+bones/2/rotation = Quaternion(0.163292, 0, 0, 0.986578)
+bones/3/rotation = Quaternion(-0.163292, 0, 0, 0.986578)
 bones/5/rotation = Quaternion(0, 0, -0.382683, 0.92388)
 bones/6/rotation = Quaternion(0, 0.5, 0, 0.866025)
 
 [node name="leg-left" parent="Skeleton3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.990742, 0.135761, 0, -0.135761, 0.990742, 0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0.946671, -0.322201, 0, 0.322201, 0.946671, 0.074204, 0.223184, -7.21911e-16)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/leg-left" index="1"]
 
@@ -81,7 +81,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.145187, -0.113007, 0.00961
 shape = SubResource("BoxShape3D_0xwii")
 
 [node name="leg-right" parent="Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.990742, -0.135761, 0, 0.135761, 0.990742, -0.074204, 0.223184, -7.21911e-16)
+transform = Transform3D(1, 0, 0, 0, 0.946671, 0.322201, 0, -0.322201, 0.946671, -0.074204, 0.223184, -7.21911e-16)
 
 [node name="Area3D" type="Area3D" parent="Skeleton3D/leg-right" index="0"]
 
