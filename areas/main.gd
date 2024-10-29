@@ -20,7 +20,7 @@ var current_cam = CAMERA.FIRST
 func _ready() -> void:
 	$music.play()
 	# Load the targets and grave positions
-	targets = [ghost, vampire, skeleton, zombie]
+	targets = [vampire, skeleton, zombie]
 	grave_pos = [$graves/grave, $graves/grave2, $graves/grave3, $graves/grave4, 
 				$graves/grave5, $graves/grave6, $graves/grave7, $graves/grave8, 
 				$graves/grave9, $graves/grave10, $graves/grave11, $graves/grave12, 
