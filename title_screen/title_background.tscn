@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://ckwdoxgdor3tr" path="res://models/ground and rocks/road_2.tscn" id="7_msi3l"]
 [ext_resource type="PackedScene" uid="uid://bkb8xngjcvg46" path="res://models/graves/grave.tscn" id="8_s0v4b"]
 [ext_resource type="PackedScene" uid="uid://dmmv742myvlx" path="res://models/light/lightpost_single.tscn" id="9_gjdye"]
-[ext_resource type="Script" path="res://areas/spot_light_3d.gd" id="10_dw0og"]
 [ext_resource type="PackedScene" uid="uid://curw6svjjdjy" path="res://models/graves/gravestone_bevel.tscn" id="11_8d1ji"]
 [ext_resource type="PackedScene" uid="uid://coiwticg7mmxe" path="res://models/graves/gravestone_round.tscn" id="12_iu602"]
 [ext_resource type="PackedScene" uid="uid://bhlxgkhx2wher" path="res://models/graves/gravestone_broken.tscn" id="13_f1vp4"]
@@ -22,6 +21,7 @@
 [ext_resource type="Script" path="res://title_screen/title_buttons.gd" id="20_8ex6k"]
 [ext_resource type="PackedScene" uid="uid://dfaiqy2jh6p1x" path="res://models/deco/pumpkin_tall.tscn" id="20_qmimg"]
 [ext_resource type="FontFile" uid="uid://dsfykyyx0om7" path="res://fonts/DoubleHomicide.ttf" id="21_hvyin"]
+[ext_resource type="FontFile" uid="uid://c3mlf2cexcx52" path="res://fonts/KiwiSoda.ttf" id="22_2vahf"]
 [ext_resource type="AudioStream" uid="uid://ryrw5ok74gj0" path="res://sfx/title_screen.mp3" id="22_e48lv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5pyja"]
@@ -979,16 +979,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1303, 0.5, -5.20616)
 [node name="lightpost-single2" parent="lights" instance=ExtResource("9_gjdye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8697, 0.5, -5.20616)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="lights"]
-transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 2.15322, 4.17395, -4.47817)
-light_energy = 4.53
-script = ExtResource("10_dw0og")
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="lights"]
-transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, -2.87644, 4.17395, -4.47817)
-light_energy = 4.53
-script = ExtResource("10_dw0og")
-
 [node name="gravestones" type="Node3D" parent="."]
 
 [node name="gravestone-bevel" parent="gravestones" instance=ExtResource("11_8d1ji")]
@@ -1800,14 +1790,14 @@ script = ExtResource("20_8ex6k")
 
 [node name="start" type="Button" parent="title_buttons"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("21_hvyin")
+theme_override_fonts/font = ExtResource("22_2vahf")
 theme_override_font_sizes/font_size = 50
 text = "START"
 
 [node name="quit" type="Button" parent="title_buttons"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("21_hvyin")
-theme_override_font_sizes/font_size = 45
+theme_override_fonts/font = ExtResource("22_2vahf")
+theme_override_font_sizes/font_size = 50
 text = "QUIT"
 
 [node name="title" type="Label" parent="."]

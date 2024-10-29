@@ -6,7 +6,7 @@ const JUMP_VELOCITY = 4
 
 var sens = 0.2
 var can_jump = false
-var raycast_test = preload("res://enemyCollider.tscn")
+var raycast_test = preload("res://enemyCollider.tscn") 
 
 # Bob variables
 const BOB_FREQ = 2.0
@@ -112,9 +112,11 @@ func _shoot() -> void:
 
 func _test_raycast(pos: Vector3) -> void:
 	var instance = raycast_test.instantiate()
+	var particles = instance.get_node("GPUParticles3D")
 	get_tree().root.add_child(instance)
 	instance.global_position = pos
-	await get_tree().create_timer(.1).timeout
+	particles.emitting = true
+	await get_tree().create_timer(.3).timeout
 	instance.queue_free()
 
 # Function to calculate head bob

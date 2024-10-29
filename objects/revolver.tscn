@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnlhojoqh0egm"]
+[gd_scene load_steps=5 format=3 uid="uid://boysxy82u1odx"]
 
 [ext_resource type="PackedScene" uid="uid://be5cl0nludoh7" path="res://models/weapons/Revolver.glb" id="1_a6eva"]
 
@@ -73,3 +73,4 @@ transform = Transform3D(0.01, 0, 0, 0, -3.61999e-08, -0.01, 0, 0.01, -3.61999e-0
 libraries = {
 "": SubResource("AnimationLibrary_gp6d5")
 }
+speed_scale = 2.0

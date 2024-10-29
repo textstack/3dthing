@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmmv742myvlx"]
+[gd_scene load_steps=9 format=3 uid="uid://dmmv742myvlx"]
 
 [ext_resource type="PackedScene" uid="uid://dg7g43to3csyi" path="res://models/light/lightpost-single.glb" id="1_0ixm6"]
+[ext_resource type="Script" path="res://models/light/spot_light_3d.gd" id="2_6pmcy"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_usudf"]
 points = PackedVector3Array(0.0418246, 1.32915, 0.0237092, -0.0209706, 1.20359, -0.0181379, 0.0208929, 1.20359, -0.0181379, -0.0209706, 1.26638, 0.128352, -0.0419024, 1.32915, -0.0391024, 0.0208929, 1.30822, 0.128352, 0.0418246, 1.22452, -0.0391024, 0.0418246, 1.22452, 0.0446246, 0.0418246, 1.32915, -0.0391024, -0.0419024, 1.22452, -0.0391024, -0.0419024, 1.32915, 0.0237092, -0.0419024, 1.22452, 0.0446246, -0.0209706, 1.30822, 0.128352, -0.0209706, 1.20359, 0.0237092, 0.0208929, 1.26638, 0.128352, 0.0208929, 1.20359, 0.0237092, 0.0418246, 1.30822, 0.0446246, -0.0419024, 1.30822, 0.0446246)
@@ -55,3 +56,8 @@ light_volumetric_fog_energy = 1.471
 light_size = 0.04
 omni_range = 5.651
 omni_attenuation = 2.745
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.63564, 0.681676)
+light_energy = 4.53
+script = ExtResource("2_6pmcy")
