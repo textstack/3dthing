@@ -29,7 +29,7 @@ func _ready() -> void:
 	
 	# Center the timer label at the top
 	var viewport_size = get_viewport_rect().size
-	timer_label.position = Vector2(viewport_size.x / 2 - 50, 18)
+	timer_label.position = Vector2(viewport_size.x / 2 - 90, 18)
 	add_child(timer_label)
 
 func _process(delta: float) -> void:
