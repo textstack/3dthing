@@ -26,8 +26,10 @@ func _ready() -> void:
 
 func _on_restart_pressed() -> void:
 	Global.reset()
-	get_tree().change_scene_to_file("res://title_screen/title_background.tscn")
+	get_tree().change_scene_to_file("res://areas/main.tscn")
 
 
 func _on_quit_pressed() -> void:
+	Global.reset()
 	get_tree().quit()
+	get_tree().change_scene_to_file("res://title_screen/title_background.tscn")

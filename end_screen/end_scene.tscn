@@ -31,9 +31,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -490.0
+offset_left = -566.0
 offset_top = -440.0
-offset_right = 490.0
+offset_right = 566.0
 offset_bottom = -157.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -43,7 +43,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 70
 theme_override_fonts/font = ExtResource("1_rl27m")
 theme_override_font_sizes/font_size = 250
-text = "GAME OVER"
+text = " GAME OVER"
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -65,7 +65,7 @@ theme_override_constants/separation = 50
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_wrs7s")
 theme_override_font_sizes/font_size = 60
-text = "MAIN MENU"
+text = "RESTART"
 
 [node name="Quit" type="Button" parent="Buttons"]
 layout_mode = 2

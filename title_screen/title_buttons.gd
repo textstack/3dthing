@@ -7,6 +7,7 @@ func _ready() -> void:
 
 # When start button is pressed start the game
 func _on_start_pressed() -> void:
+	Global.reset()
 	get_tree().change_scene_to_file("res://areas/main.tscn")
 	
 func _on_quit_pressed() -> void:
